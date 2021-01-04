@@ -119,7 +119,11 @@ author:
       url: "https://www.instagram.com/andriktr/"
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/andrej-trusevic-53879a7a/"  
+      url: "https://www.linkedin.com/in/andrej-trusevic-53879a7a/"
+    - label: "CKAD"
+      icon: "https://www.youracclaim.com/earner/earned/share/8961beb3-9991-4751-8534-fd9a9122a36c?provider=url"
+      url: /assets/images/ckad.png   
+        
 
 # Site Footer
 footer:
