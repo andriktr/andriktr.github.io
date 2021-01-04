@@ -3,7 +3,10 @@ main:
   - title: "About"
     url: https://andriktr.github.io/andriktr/about/
   - title: "Resume"
-    url: /assets/docs/cv-andrej-trusevic.pdf 
+    url: /assets/docs/cv-andrej-trusevic.pdf
+  - title: "Certifications"
+    url: https://andriktr.github.io/andriktr/certifications/
+        
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
