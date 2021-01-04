@@ -1,7 +1,14 @@
 ---
-layout: post
-title:  "Migrating to Jekyll!"
+title:  "Migrating to Jekyll!" 
+excerpt: "Migrating to Jekyll!"
+date: January 04, 2021
+toc: true
+toc_label: "Content"
+toc_sticky: true
+tags:
+  - Migration
 ---
+
 
 # Welcome
 
