@@ -38,7 +38,10 @@ Currently I'm focusing on the Microsoft Azure, Kubernetes and IaC (`terraform`, 
 
 As probably everyone in IT I constantly learning and proving my knowledge by passing various certification exams. Here are my certification achievements:
 
+<img align="" width="100" height="100" src="../assets/images/cka.png"> 
 <img align="" width="100" height="100" src="../assets/images/ckad.png"> 
+<img align="" width="100" height="100" src="../assets/images/az-admin.png"> 
+<img align="" width="100" height="100" src="../assets/images/mcsa.png"> 
 
 ## Hobbies
 
