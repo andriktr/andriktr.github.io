@@ -8,6 +8,8 @@ main:
     url: /assets/docs/cv-andrej-trusevic.pdf
   - title: "Certifications"
     url: /certifications/
+  - title: "Archive"
+    url: /year-archive/  
 
   # - title: "Sample Collections"
   #   url: /collection-archive/
