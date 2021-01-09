@@ -9,7 +9,7 @@ date: January 04, 2021
 
 # Hello World. Welcome to [sysadminas] Cloud Blog.
 
-![Visiting Microsfot Ignite 2018](../assets/images/ignite-selfie.jpg "Orlando, Florida")
+![Visiting Microsfot Ignite 2018](../assets/images/Ignite-Selfie.jpg "Orlando, Florida")
 
 ## Intro
 
@@ -44,21 +44,21 @@ As probably everyone in IT I constantly learning and proving my knowledge by pas
 
 Working in IT is not the only thing I like to do. One of my favorites hobbies is a triathlon. For those who don’t know what it is, triathlon is a combination of three sports swim, bike, run. I discovered this sport a few years ago and I really like it. There are different distances in triathlon, but probably most popular is an IRONMAN (IM). Completing IM means that you should swim 3.9km then bike 180 km and as the cherry on the cake run a marathon 42.2 km. I already completed half IM distance and full IM is on my to do list. Doing three sports is much more funnier than one.
 
-![Completing My First IM 70.3](../assets/images/im-70.3.jpg "Oteppa, Estonia")
+![Completing My First IM 70.3](../assets/images/IM-70.3.jpg "Oteppa, Estonia")
 
 ![Cycling in Tenerife](../assets/images/cycling.jpg "Tenerife, Spain")
 
 As many others in the world I also really like to travel. I think that traveling is the thing which anyone of us should constantly do because when you travel you freeing your mind you visit new places and can discover things that really could inspire you or even change you live in way you ever can’t imagine. You always meet new peoples from whom you can learn something new. Each trip is always a new adventure. Personally I always comeback from my trips recharged and at least till now I only had positive emotions.
 
-<img align="" width="400" height="400" src="../assets/images/travel-1.jpg"> 
-<img align="" width="400" height="400" src="../assets/images/travel-2.jpg"> 
+<img align="" width="700" height="500" src="../assets/images/travel-1.jpg"> 
 
-<img align="" width="400" height="400" src="../assets/images/travel-3.jpg">
-<img align="" width="400" height="400" src="../assets/images/travel-4.jpg">
+<img align="" width="700" height="500" src="../assets/images/travel-2.jpg"> 
 
-<p align="center">
-<img align="" width="700" height="600" src="../assets/images/travel-5.jpg">
-</p>
+<img align="" width="700" height="500" src="../assets/images/travel-3.jpg">
+
+<img align="" width="700" height="500" src="../assets/images/travel-4.jpg">
+
+<img align="" width="700" height="500" src="../assets/images/travel-5.jpg">
 
 > “The world is a book and those who do not travel read only one page.” – Augustine of Hippo
 
