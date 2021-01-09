@@ -44,7 +44,7 @@ As probably everyone in IT I constantly learning and proving my knowledge by pas
 
 Working in IT is not the only thing I like to do. One of my favorites hobbies is a triathlon. For those who don’t know what it is, triathlon is a combination of three sports swim, bike, run. I discovered this sport a few years ago and I really like it. There are different distances in triathlon, but probably most popular is an IRONMAN (IM). Completing IM means that you should swim 3.9km then bike 180 km and as the cherry on the cake run a marathon 42.2 km. I already completed half IM distance and full IM is on my to do list. Doing three sports is much more funnier than one.
 
-![Completing My Firsr IM 70.3](../assets/images/im-70.3.jpg "Oteppa, Estonia")
+![Completing My First IM 70.3](../assets/images/im-70.3.jpg "Oteppa, Estonia")
 
 ![Cycling in Tenerife](../assets/images/cycling.jpg "Tenerife, Spain")
 
@@ -52,10 +52,9 @@ As many others in the world I also really like to travel. I think that traveling
 
 <img align="" width="400" height="400" src="../assets/images/travel-1.jpg"> 
 <img align="" width="400" height="400" src="../assets/images/travel-2.jpg"> 
----
+
 <img align="" width="400" height="400" src="../assets/images/travel-3.jpg">
 <img align="" width="400" height="400" src="../assets/images/travel-4.jpg">
----
 
 <p align="center">
 <img align="" width="700" height="600" src="../assets/images/travel-5.jpg">
