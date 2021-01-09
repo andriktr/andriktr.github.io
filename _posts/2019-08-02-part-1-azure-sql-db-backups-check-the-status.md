@@ -105,7 +105,9 @@ $AzureSQLBackupInventory | ConvertTo-Html -PreContent  "Report Generated On: $($
 ```
 
 After the script finishes his job you will get the html file which will look like:
+
 ![Report](../assets/images/post1/report.jpg "Report")
+
 That’s it for today in the second part of Azure SQL DB backups series we will review how to configure long term backups for our Azure SQL databases.
 
-I hope this will be informative and would like to thank you for reading. See you soon 🤜🤛 
+I hope this will be informative and would like to thank you for reading. See you soon 🤜🤛.
