@@ -1,5 +1,6 @@
 ---
 permalink: /year-archive/
+title: Post By Year
 layout: posts
 author_profile: true
 ---
