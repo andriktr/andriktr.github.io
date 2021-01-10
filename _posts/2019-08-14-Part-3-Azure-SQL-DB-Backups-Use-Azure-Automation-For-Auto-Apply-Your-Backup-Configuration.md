@@ -13,7 +13,7 @@ tags:
   - Script
   - SQL
 ---
-<img align="right" width="300" height="200" src="../assets/images/post3/Post-Cover.png">
+<img align="right" width="300" height="200" src="../assets/images/post3/Post-cover.png">
 
 In previous two parts of Azure SQL DB backups series we reviewed how to get the current state of our backup retention and how to configure backup retention policy according our needs. Using powershell definitely makes things easier and helps us in case we need to apply configuration for a big amount of Azure SQL servers and databases, but we still have to do a manual which is running a script. And what if every week or even day our Azure SQL servers will have new DB’s created? For us this means we constantly will need to run our script in order to apply our backup retention policy for newly created databases. To skip all manual activities we can use Azure automation and a bit modified powershell script version from the [previous post]. So let’s fully automate Azure SQL DB backups and make sure that we will drink coffee and watch YouTube instead of manually running scripts 😎.
 
@@ -33,7 +33,7 @@ As result we will now have automation account created:
 Next thing which is needed for our setup is a “Run as account”. According [MS documentation]:
 > Authentication for managing resources in Azure with the Azure cmdlets. When you create a Run As account, it creates a new service principal user in Azure Active Directory and assigns the Contributor role to this user at the subscription level. Also to create or update a Run As account, you must have specific privileges and permissions. A Global Administrator in Azure Active Directory and an Owner in a subscription can complete all the tasks
 
-Note: Make sure you have appropriate permission to create a Run as accounts. {: .notice--info} {: .text-justify}
+> Make sure you have appropriate permission to create a Run as accounts
 
 Personally I found for myself that the easiest way to create a run as account is to use Azure portal. For this go to your Azure automation account and open a “Run as accounts” blade then select “Create Azure Run As Account”:
 
