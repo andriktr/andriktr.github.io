@@ -1,6 +1,6 @@
 ---
-title:  "Part 1 azure sql db backups check the status" 
-excerpt: "Part 1 azure sql db backups check the status"
+title:  "Part #1. Azure sql db backups check the status" 
+excerpt: "Part #1 Azure sql db backups check the status"
 date: August 02, 2019
 toc: true
 toc_label: "Content"
@@ -14,7 +14,7 @@ tags:
   - SQL
 ---
 
-<img align="left" width="300" height="300" src="../assets/images/post1/azure-sql.jpg">
+<img align="right" width="300" height="300" src="../assets/images/post1/azure-sql.jpg">
 
 Hi All,
 
