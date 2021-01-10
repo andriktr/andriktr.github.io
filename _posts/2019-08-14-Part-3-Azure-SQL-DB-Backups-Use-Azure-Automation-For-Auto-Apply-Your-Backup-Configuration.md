@@ -33,7 +33,9 @@ As result we will now have automation account created:
 Next thing which is needed for our setup is a “Run as account”. According [MS documentation]:
 > Authentication for managing resources in Azure with the Azure cmdlets. When you create a Run As account, it creates a new service principal user in Azure Active Directory and assigns the Contributor role to this user at the subscription level. Also to create or update a Run As account, you must have specific privileges and permissions. A Global Administrator in Azure Active Directory and an Owner in a subscription can complete all the tasks
 
-> Make sure you have appropriate permission to create a Run as accounts
+<i class="far fa-sticky-note"></i> **Note:** Make sure you have appropriate permission to create a Run as accounts.
+{: .notice--info}
+{: .text-justify}
 
 Personally I found for myself that the easiest way to create a run as account is to use Azure portal. For this go to your Azure automation account and open a “Run as accounts” blade then select “Create Azure Run As Account”:
 
