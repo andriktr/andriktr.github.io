@@ -1,7 +1,7 @@
 ---
 title:  "Part #2. Azure SQL DB backups. Configure the backups" 
 excerpt: "Part #2. Azure SQL DB backups. Configure the backups"
-date: August 02, 2019
+date: August 09, 2019
 toc: true
 toc_label: "Content"
 toc_sticky: true
