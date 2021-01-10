@@ -157,12 +157,12 @@ foreach ($AzureSQLServer in $AzureSQLServers){
 
 As you can see script is pretty much the same as in [part #2] except few additional steps required for login a run as account to Azure. The result in edit pane should look like this:
 
-![Edit-a-Runbook](../assets/images/post3/Edit-a-Runbook.jpg "Edit-a-Runbook")
+![Edit-a-Runbook](../assets/images/post3/Edit-a-runbook.jpg "Edit-a-Runbook")
 
 Then you complete editing a runbook click “Save” and “Publish”.
 Our runbook is already published and we now can set it be executed periodically. For this we need to create a schedule based on which our runbook will be executed. In your automation account go to the “Schedules” blade and click “Add a schedule”. Then configure it according your requirements and press “Create”.
 
-![Add-Schedule](../assets/images/post3/Add-Schedule.jpg "Add-Schedule")
+![Add-Schedule](../assets/images/post3/Add-schedule.jpg "Add-Schedule")
 
 As you can see my schedule is configured to run once per week on Sundays at 6:32 PM.
 We are almost done the only thing which remains is to assign recently created scheduler to our runbook and set a parameters which are required in the script. To do it you need to go to your runbook and select “Add a schedule”
