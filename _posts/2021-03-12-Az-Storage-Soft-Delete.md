@@ -1,7 +1,7 @@
 ---
 title: "Automate Azure storage blob soft delete option" 
 excerpt: "Automate Azure storage blob soft delete option"
-date: March 13, 2021
+date: March 12, 2021
 toc: true
 toc_label: "Content"
 toc_sticky: true
