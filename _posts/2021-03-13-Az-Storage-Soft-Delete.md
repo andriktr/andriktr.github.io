@@ -15,7 +15,7 @@ tags:
   - SoftDelete
   - Blob
 ---
-<img align="right" width="300" height="200" src="../assets/images/post11/blob-recover.jpg">
+<img align="right" width="300" height="200" src="../assets/images/post11/Blob-recover.jpg">
 
 Hi All, in this post I wanna share a small script which you can use as part of your Azure automation and automatically set desired [soft delete] retention for blobs in all azure storage accounts across entire subscription. Soft delete is storage account data protection feature which may protect your storage blob data from accidental deletion or incorrect modification by user or application. By default soft delete is not enabled on newly created storage accounts. For sure for business critical application it's vital to have such feature enabled. In this DevOps era many different teams may provision azure resources, including storage accounts, by their self and for sure not all will take in to account such things as data safety, so we as Azure admins can take care of this and with help of Azure automation enable it by default for all existing and newly create storage accounts.
 
