@@ -91,11 +91,11 @@ foreach ($StorageAccount in $StorageAccounts) {
 {: .notice--info}
 {: .text-justify}
 
-As you may see script requires one parameters which defines how long (in days) soft-deleted blobs are retained by Azure Storage. You may choose between minimum is 1 day and the maximum is 365.
+As you may see script requires one parameters which defines how long (in days) soft-deleted blobs are retained by Azure Storage. You may choose between minimum which is 1 day and the maximum which is 365.
 
 You also can easily adopt this script for one time execution, just comment `Connect to azure with run as account` area of the script.
 
-I hope this will be useful for you and feel free to leave your questions in the comment. 
+I hope this will be useful for you and feel free to leave your questions in the comments. 
 
 Thank you 🤜🤛
 
