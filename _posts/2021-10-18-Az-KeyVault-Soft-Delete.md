@@ -48,6 +48,10 @@ done
 {: .notice--info}
 {: .text-justify}
 
+Additionally you also can simply adopt this script for another key vault settings changes for example to enable RBAC Authorization.
+
+That's all ✍ for today.
+
 Thank you 🤜🤛
 
 <!-- Links -->
