@@ -21,9 +21,10 @@ tags:
 <img align="right" width="300" height="150" src="../assets/images/post14/key-vault.png">
 
 Hi Folks,
+
 Recently we did a review of Azure Advisor alerts in our company subscriptions and discovered that we still have a bunch of key vaults where [soft delete] option is not enabled. A while ago Microsoft made this option enabled by default for all newly created key vault (and at some point they will probably force it to all key vaults). Soft delete option allows you to recover your key vault even it was deleted from the resource group. When soft delete is enabled your key vault is not completely deleted and available for restore for as many days as you set in the soft delete retention days setting. Azure key vault is typically used for storing various sensitive data like passwords, tokens or certificates and keep it protected from accidental deletion is important and necessary.
 
-As I mentioned we have found that some of our azure key vaults do not have soft delete enabled the reason for this is that all these key vault were created a long time ago and during their creation "soft delete" feature was not implemented.
+As I mentioned we have found that some of our azure key vaults do not have soft delete enabled the reason for this is that all these key vault were created a long time ago and during their creation "soft delete" feature was not available.
 
 To close the Azure Advisor alert we need to turn on "soft delete" for all key vaults. To achieve this we can for sure use Azure portal, but this not what we want to do for 100 key vaults. So I wrote a small and simple bash script which enables "soft delete" for all key vaults in the subscription where it's turned off.
 
