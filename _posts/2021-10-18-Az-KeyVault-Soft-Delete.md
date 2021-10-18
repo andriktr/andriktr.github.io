@@ -32,6 +32,8 @@ To close the Azure Advisor alert we need to turn on "soft delete" for all key va
 export SUBSCRIPTION="Subscription Name Goes Here" # Subscription Name
 export SOFT_DELETE_RETENTION_DAYS=90 # Number of days to keep your key vault recoverable from deletion 
 
+az account set --subscription "$SUBSCRIPTION"
+
 KEY_VAULTS=$(az keyvault list --subscription "$SUBSCRIPTION" --query "[].{name:name}" -o tsv)
 for VAULT in ${KEY_VAULTS[@]}
 do
