@@ -1,7 +1,7 @@
 ---
 title: "Enable Soft Delete For All Azure KeyVaults" 
 excerpt: "Enable Soft Delete For All Azure KeyVaults"
-date: October 18, 2022
+date: October 18, 2021
 toc: true
 toc_label: "Content"
 toc_sticky: true
