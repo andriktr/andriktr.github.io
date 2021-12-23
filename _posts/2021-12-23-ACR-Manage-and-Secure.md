@@ -95,7 +95,6 @@ In case if you want to run this automatically on a daily basis you can use Azure
 
 ```yaml
 # Make sure your build agent has Azure CLI installed    
-
 pool: my-pool
 
 pr: none
@@ -109,7 +108,6 @@ schedules:
     - dev  
     - master
   always: true
-
 
 jobs: 
 - job: 'CleanUpAzureContainerRegistries'
