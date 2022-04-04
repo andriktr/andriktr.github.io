@@ -1,7 +1,7 @@
 ---
 title: "Automate Azure storage soft delete v2" 
 excerpt: "Automate Azure storage soft delete v2"
-date: April 06, 2022
+date: April 04, 2022
 toc: true
 toc_label: "Content"
 toc_sticky: true
