@@ -28,7 +28,9 @@ tags:
 
 Hi All,
 
-In this post we will try to write our first super simple Go app and deploy it to our k8s cluster. Go programming language is one of most popular programming languages in the world. It is a great language to learn. Main benefit of Go is that it is easy to learn and it is very fast. Also go has big and active developer community so you may expect to get help if you struggle with your Go project. As you probably know Kubernetes is written in Go as well as allot of other great applications.
+In this post we will try to write first super simple Go app and deploy it to our k8s cluster.
+
+Go programming language is one of most popular programming languages in the world. It is a great language to learn. Main benefit of Go is that it is easy to learn and it is very fast. Also Go has big and active developer community so you may expect to get help if you struggle with your project. As you probably know Kubernetes is written in Go as well as many other great applications.
 
 If you like me also just starting your Go lang journey I can recommend a few resources that will help you to get started with Go.
 
@@ -109,7 +111,7 @@ func main() {
 }
 ```
 
-As you can see the code is very simple. We just need to import some packages and create a function that will be called when someone will call our web application. The function will print out some information about pod and application version. All information (except current date time) will be gathered from container environment variables. Our web application will be available on port 8080.
+As you can see the code is very simple. We just need to import some packages and create a function that will be called when someone will call our web application. The function will print out information about pod as well as date/time and application version. All information (except current date time) will be gathered from container environment variables. Our web application will be available on port 8080.
 
 Now let's test our application locally to make sure it works before we wrap it into a Docker image. For this first we need to run:
 
@@ -117,13 +119,13 @@ Now let's test our application locally to make sure it works before we wrap it i
 go run main.go
 ```
 
-Then in your browser (or you can use parallel terminal with curl) hit [http://localhost:8080/](http://localhost:8080/) and you should see info similar to mine.
+Then in your browser (alternatively you can use parallel terminal with curl) hit [http://localhost:8080/](http://localhost:8080/) and you should see info similar to mine.
 
 <img align="center" width="" height="" src="../assets/images/post20/go-test.png">
 
-As you can see our application is working fine. You may notice that `Pod information` and `Node name` are not shown this is because we do not have set appropriate environment variables locally in Kubernetes these values will be set automatically in our deployment.
+As you can see our application is working fine. You may notice that `Pod information` and `Node name` are not shown this is because we do not have appropriate environment variables locally. In Kubernetes these values will be set automatically in our deployment.
 
-OK we are done with our first Go app. Now let's wrap it into a Docker image.
+OK we are done with our first Go app code. Now let's wrap it into a Docker image.
 
 First we need to create a Dockerfile.
 
@@ -166,7 +168,7 @@ USER nonroot:nonroot
 ENTRYPOINT ["/pod-info"]
 ```
 
-We are creating our image in two steps first we use a `golang:1.18-buster` as a build image where we will build our application. Then we use `gcr.io/distroless/base-debian10` as a deploy image which will be used to deploy our application. The `gcr.io/distroless/base-debian10` image a distroless image which has a minimal set of packages installed and hugely minimizes the size of our image as well as potential attack surface. We will run our application under non root user which also is a security best practice.
+We are creating our image in two steps first we use a `golang:1.18-buster` as a build image where we will build our application. Then we use `gcr.io/distroless/base-debian10` as a deploy image which will be used to deploy our application. The `gcr.io/distroless/base-debian10` image a distroless image which has a minimal set of packages installed this hugely minimizes the size of our image as well as potential attack surface. We will run our application under non root user which also is a security best practice.
 
 Now let's create an actual Docker image and push it to our registry.
 
@@ -175,11 +177,11 @@ docker build --platform linux/amd64 -t andriktr/pod-info:0.3.0 .
 docker image push andriktr/pod-info:0.3.0
 ```
 
-Now our image has minimal size and much more secure comparing to the full distro images:
+Now our image has minimal size::
 
 <img align="center" width="" height="" src="../assets/images/post20/docker-image-list.png">
 
-If we scan our images with `trivy` it has less vulnerabilities than the full distro images.
+If we scan our images with `trivy` it has less vulnerabilities than the full distro images:
 
 <img align="center" width="" height="" src="../assets/images/post20/trivy-scan.png">
 
@@ -248,7 +250,7 @@ spec:
       serviceAccountName: pod-info
 ```
 
-We deploy a `service` to expose our application on port 80. We also creating a `service account` which will be used to run our POD. Last peace is deployment itself where we using our image. To expose pod information we use [pod fields as environment variable](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#use-pod-fields-as-values-for-environment-variables)
+We deploy a `service` to expose our application on port 80. We also creating a `service account` which will be used to run our POD. Last peace is deployment itself where we use our image. To expose pod information we use [pod fields as environment variable](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#use-pod-fields-as-values-for-environment-variables)
 
 Let's deploy the application and check how it works.
 
@@ -261,19 +263,19 @@ As result we have following resources in the cluster:
 
 <img align="center" width="" height="" src="../assets/images/post20/deployment-info.png">
 
-Last thing we need to do is to check how our application is working in the cluster. We exposed application via `service` on port 80. So we can use `kubectl port-forward` to access it from our local machine.
+Last thing we need to do is to check how our application is working in the cluster. We exposed application via `service`, so we can use `kubectl port-forward` to access it from our local machine.
 
 ```bash
 kubectl port-forward svc/pod-info 9999:80
 ```
 
-When if you hit [http://localhost:9999/](http://localhost:9999/) you should see the following
+Then if you hit [http://localhost:9999/](http://localhost:9999/) in browser or `curl` you should see the following:
 
 <img align="center" width="" height="" src="../assets/images/post20/pod-info-output.png">
 
-Seems like everything is working fine. 
+Seems like everything is working fine and we have our application running in the cluster.
 
-You can find all the the sources in the [Pod-Info repository](https://github.com/andriktr/pod-info)
+You can find all the the source file in the [Pod-Info repository](https://github.com/andriktr/pod-info)
 
 I hope this post was informative and useful for you and would like to THANK YOU for reading it.
 
