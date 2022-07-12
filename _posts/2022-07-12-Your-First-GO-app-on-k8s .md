@@ -1,7 +1,7 @@
 ---
 title: "Write and Deploy your first GO app to K8S" 
 excerpt: Write and Deploy your first GO app to K8S
-date: July 21, 2022
+date: July 12, 2022
 toc: true
 toc_label: "Content"
 toc_sticky: true
