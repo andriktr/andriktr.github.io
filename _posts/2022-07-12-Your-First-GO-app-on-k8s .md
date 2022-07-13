@@ -276,7 +276,7 @@ Then if you hit [http://localhost:9999/](http://localhost:9999/) in browser or `
 
 Seems like everything is working fine and we have our application running in the cluster.
 
-You can find all the the source file in the [Pod-Info repository](https://github.com/andriktr/pod-info)
+You can find all the the source files in the [Pod-Info repository](https://github.com/andriktr/pod-info)
 
 I hope this post was informative and useful for you and would like to THANK YOU for reading it.
 
