@@ -90,11 +90,13 @@ foreach ($StorageAccount in $StorageAccounts) {
     if ($StorageAccount.Tags[$Tag] -eq $TagValue) {
         if ($SoftDeleteSetting.ContainerDeleteRetentionPolicy.Enabled -eq $True) {
             Write-Host "Soft Delete should be disabled for storage account: $($StorageAccount.Name), but it has container soft delete enabled. Disabling container soft delete..."
-            Disable-AzStorageContainerDeleteRetentionPolicy -StorageAccountName $StorageAccount.Name -ResourceGroupName $StorageAccount.ResourceGroupName
+            $SaContext = New-AzStorageContext -StorageAccountName $StorageAccount.Name
+            Disable-AzStorageContainerDeleteRetentionPolicy -Context $SaContext
         }    
         if ($SoftDeleteSetting.DeleteRetentionPolicy.Enabled -eq $True) {
             Write-Host "Soft Delete should be disabled for storage account: $($StorageAccount.Name), but it has blob soft delete enabled. Disabling blob soft delete..."
-            Disable-AzStorageDeleteRetentionPolicy -StorageAccountName $StorageAccount.Name -ResourceGroupName $StorageAccount.ResourceGroupName
+            $SaContext = New-AzStorageContext -StorageAccountName $StorageAccount.Name
+            Disable-AzStorageDeleteRetentionPolicy -Context $SaContext
         }
         if ($SoftDeleteSetting.DeleteRetentionPolicy.Enabled -ne $True -And $SoftDeleteSetting.ContainerDeleteRetentionPolicy.Enabled -ne $True) {
             Write-Host "Soft Delete should be disabled for storage account: $($StorageAccount.Name) skipping it..."
