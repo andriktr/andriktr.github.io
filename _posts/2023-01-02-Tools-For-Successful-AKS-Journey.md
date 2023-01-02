@@ -1,7 +1,7 @@
 ---
 title: "Tools for successful AKS journey"
 excerpt: Tools for successful AKS journey
-date: January 10, 2023
+date: January 02, 2023
 toc: true
 toc_label: "Content"
 toc_sticky: true
