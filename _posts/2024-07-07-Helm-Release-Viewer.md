@@ -105,7 +105,7 @@ Revision History:
 Manifest:
 <img align="center" width="" height="" src="../assets/images/post25/3.png">
 
-Values (As I did not provide any values file to the Helm Release Viewer deployment it uses default values which are defined in the `values.yaml` file of the Helm chart. As consequence helm get values command will not return any values so this is why you see empty values in the screenshot above however if you provide your own values file you will see the values that you have provided):
+Values (As I did not provide any values file to the Helm Release Viewer deployment it uses default values which are defined in the `values.yaml` file of the Helm chart. As consequence `helm get values` command will not return any values so this is why you see empty values in the screenshot above however if you provide your own values file you will see the values that you have provided):
 
 <img align="center" width="" height="" src="../assets/images/post25/4.png">
 
@@ -124,37 +124,37 @@ IN_CLUSTER | If set to true, the application will use the in-cluster configurati
 
 To run the application locally you need to perform the following steps:
 
-1.Clone the repository
+1. Clone the repository
 
 ```bash
 git clone https://github.com/andriktr/helm-release-viewer.git
 ```
 
-2.Change to the `app` directory
+2. Change to the `app` directory
 
 ```bash
 cd helm-release-viewer/app
 ```
 
-3.Install the required dependencies by running `pip install -r requirements.txt`
+3. Install the required dependencies by running `pip install -r requirements.txt`
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4.Set the `IN_CLUSTER` environment variable to `false` and if needed set other environment variables
+4. Set the `IN_CLUSTER` environment variable to `false` and if needed set other environment variables
 
 ```bash
 export IN_CLUSTER=false
 ```
 
-5.Run the application
+5. Run the application
 
 ```bash
 python helm_release_viewer.py
 ```
 
-6.Access the application by opening [http://localhost:8080](http://localhost:8080) in your web browser
+6. Access the application by opening [http://localhost:8080](http://localhost:8080) in your web browser
 
 To make the application faster and more responsive I have implemented a simple caching mechanism that caches helm releases for specified time. You can configure the cache time and cache size by passing CACHE_TTL and CACHE_SIZE environment variables to the deployment. As my testing show this significantly improves the performance of the application in large clusters with hundreds of namespaces and releases. Additionally to the caching data from namespace is being fetched in parallel which also improves the performance of the application.
 
