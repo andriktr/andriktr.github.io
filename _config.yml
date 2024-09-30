@@ -94,8 +94,8 @@ analytics:
 # Site Author
 author:
   name             : "Andrej Trusevic"
-  avatar           : "/assets/images/bio-photo-2.png"
-  bio              : "Cloud engineer focusing on the Kubernetes and Azure"
+  avatar           : "/assets/images/bio-photo-3.png"
+  bio              : "Kubestronaut | Cloud Engineer"
   location         : "Vilnius, Lithuania"
   #email            : andriktr@gmail.com
   links:
