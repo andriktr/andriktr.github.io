@@ -1,5 +1,5 @@
 ---
-title: How to Host Trivy DB in Azure Container Registry"
+title: How to Host Trivy DB in Azure Container Registry
 excerpt: Helm Release Viewer
 date: November 25, 2024
 toc: true
@@ -36,7 +36,7 @@ tags:
 - OCI Registry
 ---
 
-<img align="right" width="250" height="250" src="../assets/images/post27/2.png">
+<img align="right" width="200" height="200" src="../assets/images/post27/2.png">
 
 Those of you who are using [Trivy](https://github.com/aquasecurity/trivy) in your CI/CD pipelines to scan container images for vulnerabilities, you might have noticed that already for some time `trivy image` command may fail with the following error:
 
