@@ -1,7 +1,7 @@
 ---
 title: How to Host Trivy DB in Azure Container Registry"
 excerpt: Helm Release Viewer
-date: November 26, 2024
+date: November 25, 2024
 toc: true
 toc_label: "Content"
 toc_sticky: true
