@@ -212,4 +212,6 @@ Once you have the Trivy DB in your ACR you can use your regular `trivy image` co
 
 Important to note that in [one of the latest PR's](https://github.com/aquasecurity/trivy/pull/7679) this issue is fixed and mirror.gcr.io is now used as a default DB repository, but your will still benefit from hosting the DB in your private registry as you will have more control over the DB updates and you will not be affected by any potential rate limiting. DB download process should be faster as less concurrent downloads will be made compared to the public registry. And of course keeping and using data in/from private registry is more secure.
 
+Also worth mentioning that the above pipeline can be easily converted to GitHub Actions or any other CI/CD tool you are using. Same approach can be used to host the Trivy DB in any other OCI registry like Docker Hub, Quay, AWS ECR etc. 
+
 I hope this post was useful for you and you will find it helpful. If you have any questions or suggestions feel free to contact me and I will be happy to discuss it with you.
