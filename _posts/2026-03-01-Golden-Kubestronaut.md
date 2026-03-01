@@ -145,7 +145,7 @@ Having gone through the entire journey from zero to Golden Kubestronaut here are
 
 ## New Exam Requirement
 
-P.S. Since 2026 March 1st one more exam has been added to the Golden Kubestronaut requirements — the [Certified Cloud Native Platform Engineer (CNPE)](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineer-cnpe/) which is an advanced hands-on exam focused on platform engineering concepts and practices. Here you need to demonstrate your ability to use a variety of CNCF tools tools like Kubernetes, Argo CD, Backstage, Kyverno, OpenTelemetry, Crossplane, etc to build and operate a cloud native platform. I have not taken this one yet but as far as I heard it is quite interesting, but at the same time very challenging.
+Since 2026 March 1st one more exam has been added to the Golden Kubestronaut requirements — the [Certified Cloud Native Platform Engineer (CNPE)](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineer-cnpe/) which is an advanced hands-on exam focused on platform engineering concepts and practices. Here you need to demonstrate your ability to use a variety of CNCF tools tools like Kubernetes, Argo CD, Backstage, Kyverno, OpenTelemetry, Crossplane, etc to build and operate a cloud native platform. I have not taken this one yet but as far as I heard it is quite interesting, but at the same time very challenging.
 
 ## Conclusion
 
