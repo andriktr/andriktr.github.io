@@ -67,7 +67,7 @@ In total that is **15 certifications** to achieve Golden Kubestronaut status. Qu
 
 ## KodeKloud — Your Best Friend for This Journey
 
-Before diving into the individual exams I want to give a special shout-out to [KodeKloud](https://kodekloud.com/). If I had to recommend a single learning platform for the Golden Kubestronaut path, it would be KodeKloud without hesitation. They have dedicated courses for almost every CNCF certification covered here — complete with structured theory, hands-on labs, and mock exams. The quality is consistently high across all courses and the hands-on lab environments are particularly valuable because they let you practice in real clusters without having to set up your own infrastructure. Whether you are a complete beginner to a specific technology or just need to fill in a few gaps before an exam, KodeKloud will get you there. I used it extensively throughout my Golden Kubestronaut journey and can recommend it wholeheartedly.
+Before diving into the individual exams I want to give a special shout-out to [KodeKloud](https://kodekloud.com/). If I had to recommend a single learning platform for the Golden Kubestronaut path, it would be KodeKloud without hesitation. They have dedicated courses for every CNCF certification covered here — complete with structured theory, hands-on labs, and mock exams. The quality is consistently high across all courses and the hands-on lab environments are particularly valuable because they let you practice in real clusters without having to set up your own infrastructure. Whether you are a complete beginner to a specific technology or just need to fill in a few gaps before an exam, KodeKloud will get you there. I used it extensively throughout my Golden Kubestronaut journey and can recommend it wholeheartedly.
 
 ## The Additional Certifications
 
@@ -77,35 +77,35 @@ If you have already completed your Kubestronaut journey like I did, you just nee
 
 [LFCS](https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/) is a hands-on, performance-based exam testing your Linux system administration skills. You can expect tasks covering Linux file system management, user and group administration, service configuration, networking, and basic security hardening. The exam is 2 hours long and has a similar feel to the CKA exam in terms of format — a terminal-based environment where you need to perform real tasks.
 
-Do not underestimate this exam. Even with years of Linux experience and having passed CKA and CKS, I found LFCS to be genuinely challenging. The breadth of topics is wide and some tasks can catch you off guard if you have gaps in areas you don't use day-to-day. Make sure to thoroughly review systemd service management, networking configuration, storage and LVM management, package management across different distributions, and user/group administration. Dedicated preparation is strongly recommended regardless of your Linux background — the KodeKloud LFCS course is a great structured option here.
+Do not underestimate this exam. Even with years of Linux experience and having passed CKA and CKS, I found LFCS to be genuinely challenging. The breadth of topics is wide and some tasks can catch you off guard if you have gaps in areas you don't use day-to-day. Make sure to thoroughly review systemd service management, networking configuration, storage and LVM management, user/group administration, simple apache or nginx configs as well as essential commands like `find`, `mount` etc. Dedicated preparation is strongly recommended regardless of your Linux background — the KodeKloud LFCS course is a great structured option here.
 
 ### PCA — Prometheus Certified Associate
 
 [PCA](https://training.linuxfoundation.org/certification/prometheus-certified-associate/) is a multiple choice exam (60 questions, 90 minutes) covering the fundamentals of Prometheus — the de facto standard for monitoring in the cloud native world. The exam is split across five domains: observability concepts, Prometheus architecture and configuration, PromQL, alerting, and exporters.
 
-If you use Prometheus in your daily work this exam will feel very familiar. The most important topic to master is PromQL — make sure you understand how to write queries, use functions like `rate()`, `increase()`, `histogram_quantile()`, and how to apply label selectors and aggregation operators correctly. Also pay attention to the observability concepts domain as it covers broader topics like SLOs, SLIs, and SLAs which you need to understand well. For learning resources I recommend the [Prometheus official documentation](https://prometheus.io/docs/) and the KodeKloud PCA course.
+If you use Prometheus in your daily work this exam will feel very familiar. The most important topic to master is PromQL — make sure you understand how to write queries, use functions like `rate()`, `increase()`, `histogram_quantile(`, and how to apply label selectors and aggregation operators correctly. Also pay attention to the observability concepts domain as it covers broader topics like SLOs, SLIs, and SLAs which you need to understand well. For learning resources I recommend the [Prometheus official documentation](https://prometheus.io/docs/) and the KodeKloud PCA course.
 
 ### ICA — Istio Certified Associate
 
 [ICA](https://training.linuxfoundation.org/certification/istio-certified-associate-ica/) is a hands-on, performance-based exam similar in format to CKA and CKAD. You will be working in a real Kubernetes environment with Istio pre-installed, solving 15-20 practical tasks in 2 hours. The exam covers traffic management (35%), securing workloads (25%), troubleshooting (20%), and installation/upgrades/configuration (20%).
 
-This is probably the most challenging of the additional certifications given its hands-on nature. Traffic management is the dominant topic so make sure you have solid hands-on experience with VirtualService, DestinationRule, and Gateway resources. For security, focus on mTLS and AuthorizationPolicy. You are allowed to use [Istio documentation](https://istio.io/latest/docs/) during the exam which is a big help. As with CKA/CKAD I highly recommend practicing in a real cluster before attempting this one — reading alone is not enough. The passing score is 68%.
+This is one of the most challenging of the additional certifications given its hands-on nature. Traffic management is the dominant topic so make sure you have solid hands-on experience with VirtualService, DestinationRule, and Gateway resources. For security, focus on mTLS and AuthorizationPolicy. You are allowed to use [Istio documentation](https://istio.io/latest/docs/) during the exam which is a big help. Make sure you are comfortable in navigating the documentation and you know how to quickly find the resources example you need. As with CKA/CKAD I highly recommend practicing in a real cluster before attempting this one — reading alone is not enough.
 
 ### CCA — Cilium Certified Associate
 
 [CCA](https://training.linuxfoundation.org/certification/cilium-certified-associate/) is a multiple choice exam focused on Cilium — the eBPF-based networking, observability, and security solution for Kubernetes. The exam covers Cilium architecture, network policies, Hubble observability, and cluster mesh.
 
-Cilium has been gaining a lot of traction recently especially since it became a CNCF graduation project and was added as a topic to the updated CKS exam. If you have been keeping up with the Kubernetes ecosystem Cilium should not be a stranger to you. The [official Cilium documentation](https://docs.cilium.io/) is your main resource for preparation.
+Cilium has been gaining a lot of traction recently especially since it became a CNCF graduation project and was added as a topic to the updated CKS exam. If you have been keeping up with the Kubernetes ecosystem Cilium should not be a stranger to you. The [official Cilium documentation](https://docs.cilium.io/) is your main resource for preparation. Yes it questions/answers multiple choice exam, but I can assure that it was most difficult multiple choice exam I have taken in my entire IT career. The questions are very detailed and require a deep understanding of Cilium concepts and features to answer correctly. Make sure to read the documentation carefully and understand how Cilium works under the hood — this is not an exam you can pass with just surface-level knowledge.
 
 ### CAPA — Certified Argo Project Associate
 
-[CAPA](https://training.linuxfoundation.org/certification/certified-argo-project-associate-capa/) is a beginner-friendly multiple choice exam covering the Argo project suite — Argo Workflows, Argo CD, Argo Rollouts, and Argo Events. It is one of the more accessible exams in the Golden Kubestronaut set and if you have any real-world experience with Argo CD you will feel very comfortable here. The [official Argo documentation](https://argoproj.github.io/cd/) combined with some hands-on time is more than sufficient for preparation.
+[CAPA](https://training.linuxfoundation.org/certification/certified-argo-project-associate-capa/) is a multiple choice exam covering the Argo project suite — Argo Workflows, Argo CD, Argo Rollouts, and Argo Events. It is not easy, but if you have experience with Argo CD and Argo Workflows it should be manageable without to much extra preparation. The exam covers Argo architecture, core concepts, and common use cases for each of the four projects. For Argo CD focus on understanding application manifests, sync policies, and how to troubleshoot common issues. For Argo Workflows make sure you understand how to define workflows, use templates, and manage workflow execution. The [official Argo documentation](https://argoproj.github.io/) is comprehensive and the KodeKloud CAPA course provides a great structured introduction to the entire Argo ecosystem.
 
 ### CGOA — Certified GitOps Associate
 
-[CGOA](https://training.linuxfoundation.org/certification/certified-gitops-associate-cgoa/) is another beginner-level multiple choice exam focused on GitOps principles and practices. It is one of the easiest exams in the entire Golden Kubestronaut set — especially if you have done CAPA first.
+[CGOA](https://training.linuxfoundation.org/certification/certified-gitops-associate-cgoa/) is a beginner-level multiple choice exam focused on GitOps principles and practices. It is one of the easiest exams in the entire Golden Kubestronaut set — especially if you have done CAPA first.
 
-The exam is conceptual rather than hands-on. It covers GitOps principles as defined by the [OpenGitOps](https://opengitops.dev/) project, GitOps patterns, and common tooling. Understanding the four core GitOps principles and the difference between push-based and pull-based deployment models is the bulk of what you need. If you work with Argo CD or Flux regularly you may be able to pass this one with minimal extra preparation.
+The exam covers GitOps principles as defined by the [OpenGitOps](https://opengitops.dev/) project, GitOps patterns, and common tooling. Understanding the four core GitOps principles and the difference between push-based and pull-based deployment models is the bulk of what you need. If you work with Argo CD or Flux regularly you may be able to pass this one with minimal extra preparation.
 
 ### CBA — Certified Backstage Associate
 
@@ -115,7 +115,7 @@ Backstage was probably the technology I was least familiar with before starting 
 
 ### OTCA — OpenTelemetry Certified Associate
 
-[OTCA](https://training.linuxfoundation.org/certification/opentelemetry-certified-associate-otca/) is a multiple choice exam covering OpenTelemetry — the CNCF observability framework for traces, metrics, and logs. The exam covers OTel architecture, instrumentation, the collector (receivers, processors, exporters), and how to work with all three telemetry signals.
+[OTCA](https://training.linuxfoundation.org/certification/opentelemetry-certified-associate-otca/) is a multiple choice exam covering OpenTelemetry — the CNCF observability framework for traces, metrics, and logs. The exam covers OTel architecture, instrumentation, the collector (receivers, processors, exporters), and how to work with all three telemetry signals. Exam may fill challenging due to the a lot of different terminology like spans, metrics types, context propagation, bagage, etc.
 
 OpenTelemetry is increasingly becoming the standard for observability in cloud native environments so this is a very practical and relevant certification. Focus on understanding the three pillars of observability (traces, metrics, logs), the OTel collector architecture, and how to instrument applications with OTel SDKs. The [official OpenTelemetry documentation](https://opentelemetry.io/docs/) is comprehensive and the KodeKloud OTCA course is a solid structured option.
 
@@ -127,7 +127,7 @@ Kyverno is a fantastic tool for enforcing security and compliance policies in Ku
 
 ### CNPA — Certified Cloud Native Platform Engineering Associate
 
-[CNPA](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineering-associate-cnpa/) is a multiple choice exam covering platform engineering concepts and practices in a cloud native context. The exam focuses on Internal Developer Platforms (IDPs), the CNCF platform engineering landscape, and developer experience. Platform engineering has become one of the hottest topics in the industry so this is a timely and relevant certification. The [CNCF Platform Engineering whitepaper](https://tag-app-delivery.cncf.io/whitepapers/platforms/) is essential reading before taking this exam.
+[CNPA](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineering-associate-cnpa/) is a multiple choice easy exam covering platform engineering concepts and practices in a cloud native context. The exam focuses on Internal Developer Platforms (IDPs), the CNCF platform engineering landscape, and developer experience. Platform engineering has become one of the hottest topics in the industry so this is a timely and relevant certification. The [CNCF Platform Engineering whitepaper](https://tag-app-delivery.cncf.io/whitepapers/platforms/) is essential reading before taking this exam. Unlike all other multiple choice exams in the Golden Kubestronaut journey, CNPA has ~ 90 questions instead of 60, but the exam time is prolonged accordingly.
 
 ## Tips for the Golden Kubestronaut Journey
 
@@ -145,13 +145,20 @@ Having gone through the entire journey from zero to Golden Kubestronaut here are
 
 ## Conclusion
 
-Achieving Golden Kubestronaut has been the most challenging and rewarding certification journey I have ever undertaken. It required learning and demonstrating proficiency across the broadest possible slice of the CNCF ecosystem — from core Kubernetes to service mesh, observability, security policies, GitOps, developer portals and platform engineering.
+Achieving Golden Kubestronaut has been  challenging and rewarding certification journey. It required learning and demonstrating proficiency across the broadest possible slice of the CNCF ecosystem — from core Kubernetes to service mesh, observability, security policies, GitOps, developer portals and platform engineering.
 
 What I love most about this program is that it pushes you to explore technologies you might not encounter in your day-to-day work. Even if you never work with Backstage or Argo Events professionally, understanding these tools makes you a much more well-rounded cloud native engineer and opens your eyes to solutions for problems you didn't know could be solved this elegantly.
 
 If you are currently on your Kubestronaut journey and wondering whether to go for Golden Kubestronaut as well — I say absolutely go for it! It is a lot of work, but the CNCF ecosystem is rich and fascinating and there is something genuinely satisfying about seeing how all the pieces fit together into a coherent cloud native platform story.
 
-And remember: once a Golden Kubestronaut, always a Golden Kubestronaut!
+## New Exam Requirement
+
+P.S. Since 2026 March 1st one more exam has been added to the Golden Kubestronaut requirements — the [Certified Cloud Native Platform Engineer (CNPE)](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineer-cnpe/) which is an advanced hands-on exam focused on platform engineering concepts and practices. Here you need to demonstrate your ability to use a variety of CNCF tools tools like Kubernetes, Argo CD, Backstage, Kyverno, OpenTelemetry, Crossplane, etc to build and operate a cloud native platform. I have not taken this one yet but as far as I heard it is quite interesting, but at the same time very challenging.
+
+## Final Thoughts
+Thank you for reading about my Golden Kubestronaut journey! It has been an incredible learning experience and I'm proud to have achieved this milestone. The CNCF ecosystem is vibrant and constantly evolving, so there is always something new to learn and explore. Whether you are just starting your Kubestronaut journey or are already on your way, I encourage you to keep pushing forward and expanding your knowledge. The Golden Kubestronaut program is not just about collecting certifications — it's about becoming a truly well-rounded cloud native engineer with a deep understanding of the entire ecosystem.
+
+**And remember: once a Golden Kubestronaut, always a Golden Kubestronaut!**
 
 If you have any questions about the journey or any of the individual certifications feel free to reach out. I will be happy to help!
 
