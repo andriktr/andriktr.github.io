@@ -143,6 +143,10 @@ Having gone through the entire journey from zero to Golden Kubestronaut here are
 
 **5. Watch for CNCF discounts.** CNCF and Linux Foundation regularly offer discounts especially around Black Friday / Cyber Monday (up to 60% off). Buy exam bundles when discounts are available to save significant money — with 15 certifications to collect this adds up quickly.
 
+## New Exam Requirement
+
+P.S. Since 2026 March 1st one more exam has been added to the Golden Kubestronaut requirements — the [Certified Cloud Native Platform Engineer (CNPE)](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineer-cnpe/) which is an advanced hands-on exam focused on platform engineering concepts and practices. Here you need to demonstrate your ability to use a variety of CNCF tools tools like Kubernetes, Argo CD, Backstage, Kyverno, OpenTelemetry, Crossplane, etc to build and operate a cloud native platform. I have not taken this one yet but as far as I heard it is quite interesting, but at the same time very challenging.
+
 ## Conclusion
 
 Achieving Golden Kubestronaut has been  challenging and rewarding certification journey. It required learning and demonstrating proficiency across the broadest possible slice of the CNCF ecosystem — from core Kubernetes to service mesh, observability, security policies, GitOps, developer portals and platform engineering.
@@ -150,13 +154,6 @@ Achieving Golden Kubestronaut has been  challenging and rewarding certification 
 What I love most about this program is that it pushes you to explore technologies you might not encounter in your day-to-day work. Even if you never work with Backstage or Argo Events professionally, understanding these tools makes you a much more well-rounded cloud native engineer and opens your eyes to solutions for problems you didn't know could be solved this elegantly.
 
 If you are currently on your Kubestronaut journey and wondering whether to go for Golden Kubestronaut as well — I say absolutely go for it! It is a lot of work, but the CNCF ecosystem is rich and fascinating and there is something genuinely satisfying about seeing how all the pieces fit together into a coherent cloud native platform story.
-
-## New Exam Requirement
-
-P.S. Since 2026 March 1st one more exam has been added to the Golden Kubestronaut requirements — the [Certified Cloud Native Platform Engineer (CNPE)](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineer-cnpe/) which is an advanced hands-on exam focused on platform engineering concepts and practices. Here you need to demonstrate your ability to use a variety of CNCF tools tools like Kubernetes, Argo CD, Backstage, Kyverno, OpenTelemetry, Crossplane, etc to build and operate a cloud native platform. I have not taken this one yet but as far as I heard it is quite interesting, but at the same time very challenging.
-
-## Final Thoughts
-Thank you for reading about my Golden Kubestronaut journey! It has been an incredible learning experience and I'm proud to have achieved this milestone. The CNCF ecosystem is vibrant and constantly evolving, so there is always something new to learn and explore. Whether you are just starting your Kubestronaut journey or are already on your way, I encourage you to keep pushing forward and expanding your knowledge. The Golden Kubestronaut program is not just about collecting certifications — it's about becoming a truly well-rounded cloud native engineer with a deep understanding of the entire ecosystem.
 
 **And remember: once a Golden Kubestronaut, always a Golden Kubestronaut!**
 
