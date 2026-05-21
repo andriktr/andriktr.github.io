@@ -391,7 +391,7 @@ Routine Helm chart version bump from **83.5.1 → 85.1.3**. The prometheus-opera
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `kube-prometheus-stack/`                | Replace entire directory with pulled chart 85.1.3                                                                                                |
 | `environments/dev/values.yaml`          | Sync new upstream structure; update image tags; add `distroless: true` node-exporter key; add kubelet cert expiration thresholds to defaultRules |
-| `environments/prod/values.yaml`         | Same as dev (registry: `ifbalacrprod.azurecr.io`)                                                                                                |
+| `environments/prod/values.yaml`         | Same as dev (registry: `myacrprod.azurecr.io`)                                                                                                |
 | `environments/experimental/values.yaml` | Same as dev                                                                                                                                      |
 | `azure-pipelines.yml`                   | Update 3× `containerImagesToMirror` blocks with new tags                                                                                         |
 | `README.md`                             | Badge: `83.5.1` → `85.1.3`                                                                                                                       |
