@@ -22,7 +22,7 @@ tags:
   - DNS
 ---
 
-<img align="right" width="400" height="300" src="../assets/images/post31/1.svg">
+<img align="right" width="400" height="300" src="../assets/images/post31/1.png">
 
 Something breaks on an AKS cluster and the first ninety seconds decide how the next hour goes. Do you `kubectl describe` the failing pod, or do you jump straight into Azure Log Analytics because that's the tab you already had open? Do you check whether it's one pod or the whole node pool before you start theorizing about root cause? Do you compare the metric you're staring at against what it looked like yesterday, or do you just react to the number on the screen? Every on-call engineer has a mental checklist for this. Mine has gotten better over the years, mostly by getting burned: chasing a network hypothesis for forty minutes because I skipped the blast-radius check, or trusting a KQL query that turned out to be silently incomplete because of the ingestion cap.
 
