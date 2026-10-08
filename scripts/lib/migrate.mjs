@@ -1,5 +1,5 @@
 const MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
-const TAG_ALIASES = {
+export const TAG_ALIASES = {
   K8S: 'Kubernetes', k8s: 'Kubernetes', Github: 'GitHub', AzureDevOps: 'Azure DevOps', ADO: 'Azure DevOps',
   FluxCD: 'Flux', GO: 'Go', Golang: 'Go', AAD: 'Azure AD', AzureAD: 'Azure AD', Container: 'Containers',
   Charts: 'Helm Chart', DB: 'Database', 'Argo CD': 'Argo CD', Argo: 'Argo CD', Aqua: 'Aquasec',

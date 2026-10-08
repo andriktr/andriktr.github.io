@@ -7,6 +7,10 @@ describe('secondary pages', () => {
     const html = read('/tags/index.html');
     for (const id of ['kubernetes', 'aks', 'claude-code', 'ci-cd']) expect(html).toContain(`id="${id}"`);
   });
+  it('tags index keeps aliased legacy anchors', () => {
+    const html = read('/tags/index.html');
+    for (const id of ['k8s', 'aad', 'azuread', 'ado', 'azuredevops', 'fluxcd', 'golang', 'charts', 'container', 'db', 'argo', 'aqua', 'kube-node_shell']) expect(html, id).toContain(`id="${id}"`);
+  });
   it('per-tag pages exist', () => {
     expect(existsSync('dist/tags/kubernetes/index.html')).toBe(true);
     expect(existsSync('dist/tags/ci-cd/index.html')).toBe(true);
