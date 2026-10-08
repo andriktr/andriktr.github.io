@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import Prompt from '../components/Prompt.astro';
+import CertGrid from '../components/CertGrid.astro';
+---
+<Base title="Certifications" description="CNCF Golden Kubestronaut and Microsoft certifications.">
+  <Prompt cmd="cat certs.yaml" />
+  <h1 class="mono">certifications: <span class="muted"># CNCF Golden Kubestronaut + Microsoft</span></h1>
+  <CertGrid />
+</Base>

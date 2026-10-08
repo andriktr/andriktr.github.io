@@ -1,0 +1,21 @@
+// Credly badge ids, in display order (from the old _pages/certifications.html)
+export const CERT_BADGE_IDS = [
+  "59677bc1-f834-4d4b-b5e9-2defdde6c2d6",
+  "d5148f53-ce13-45fa-84ca-d732246dd0fa",
+  "25d70183-095f-4574-9a86-53572c73a644",
+  "eeb06f10-a518-4fa0-97b5-c7a9397bcbf2",
+  "8f19423a-6bc7-49ef-93b0-c8969aa20a0d",
+  "b0c8e0f1-5cae-4b45-94d7-d858c568e2a3",
+  "605ab480-a995-42b3-abe4-0a47a80e784b",
+  "e659c7b1-3cdc-4c01-be48-280e3482606e",
+  "654c782a-eb36-4dba-a41b-c413530cdcb8",
+  "c7a81277-d203-4f8d-9f0f-e316da9568eb",
+  "9b8294a2-ee17-4c97-be72-299eb7bcfe30",
+  "179b0022-95fa-4ea2-bc1f-57924905003e",
+  "b28a9d36-5c9a-4dcc-bef9-59e3cdd913bc",
+  "c9838bf4-7d45-4ff1-ae80-9e612cf1965b",
+  "c48cf8dc-3daf-4139-91d8-815952ec50d4",
+  "d6064be8-1332-4c37-808c-9f8e167642d5",
+  "3d4d2045-d2af-4aab-ab09-9d145c01cca0",
+  "2bdc113f-9410-4079-88ac-c611473954a5",
+];

@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import Prompt from '../../components/Prompt.astro';
+import PostList from '../../components/PostList.astro';
+import { getPublishedPosts } from '../../lib/posts';
+import { collectTags } from '../../lib/tags';
+const tags = collectTags(await getPublishedPosts());
+---
+<Base title="Tags">
+  <Prompt cmd="ls tags/" />
+  <p class="tag-cloud mono">{tags.map((t) => <a class="tag" href={`#${t.slug}`}>#{t.slug}<sup class="muted">{t.posts.length}</sup></a>)}</p>
+  {tags.map((t) => (
+    <section>
+      <h2 id={t.slug} class="mono"><a href={`/tags/${t.slug}/`}>#{t.slug}</a></h2>
+      <PostList posts={t.posts} />
+    </section>
+  ))}
+</Base>

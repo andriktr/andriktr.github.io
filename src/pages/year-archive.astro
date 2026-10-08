@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import Prompt from '../components/Prompt.astro';
+import PostList from '../components/PostList.astro';
+import { getPublishedPosts } from '../lib/posts';
+const posts = await getPublishedPosts();
+const years = [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))];
+---
+<Base title="Archive">
+  <Prompt cmd="ls -lR posts/" />
+  {years.map((y) => (
+    <section><h2 id={String(y)} class="mono">{y}/</h2>
+      <PostList posts={posts.filter((p) => p.data.date.getUTCFullYear() === y)} /></section>
+  ))}
+</Base>

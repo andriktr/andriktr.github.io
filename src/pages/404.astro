@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Not found">
+  <p class="prompt" style="margin-top:3rem"><span class="user">andrej@aks</span>:<span class="path">~</span>$ cd <span id="p"></span></p>
+  <p class="mono">bash: cd: <span id="p2"></span>: command not found</p>
+  <p class="mono"><a href="/">cd ~</a> · <a href="/year-archive/">ls posts/</a> · <button class="kbd" data-search-open>search</button></p>
+  <script is:inline>document.getElementById('p').textContent=location.pathname;document.getElementById('p2').textContent=location.pathname;</script>
+</Base>

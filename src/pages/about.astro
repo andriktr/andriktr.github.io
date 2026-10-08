@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Prompt from '../components/Prompt.astro';
+import { SITE } from '../config';
+---
+<Base title="About" description="Andrej Trusevic — Cloud Engineer focused on Kubernetes, Azure and agentic AI.">
+  <article class="prose" style="max-width: var(--measure)">
+    <Prompt cmd="cat about.md" />
+    <h1>Hello World. Welcome to sysadminas Cloud Blog.</h1>
+    <p>I'm Andrej Trusevic, a Cloud Engineer focused on Kubernetes and Azure. I design and operate secure, scalable cloud-native infrastructure — from cluster architecture and GitOps delivery pipelines to security tooling and AI-assisted automation.</p>
+    <h2>Certifications</h2>
+    <p>I'm a <strong>Golden Kubestronaut</strong> — CNCF's recognition for practitioners who have earned every available Kubernetes and cloud-native certification. It's the highest tier in the Kubestronaut program, requiring a full sweep of CNCF credentials including CKA, CKS, CKAD, and the growing set of associate-level certifications (CGOA, CCA, CAPA, PCA, ICA, CNPA, KCA, and others). <a href="/certifications/">See all badges</a>.</p>
+    <h2>What I Work With</h2>
+    <ul>
+      <li><strong>Kubernetes &amp; AKS</strong> — cluster design, upgrades, and day-2 operations on Azure Kubernetes Service</li>
+      <li><strong>GitOps</strong> — Flux and Helm-based delivery pipelines for declarative workload management</li>
+      <li><strong>Security</strong> — Trivy, Falco, Consul, policy enforcement, and supply chain hardening</li>
+      <li><strong>AI-assisted DevOps</strong> — encoding operational knowledge into Claude Code skills and agents to automate routine platform engineering work</li>
+    </ul>
+    <h2>Agentic AI</h2>
+    <p>I use agentic AI for day-to-day platform engineering: Claude Code skills that capture runbooks as reusable, reviewable workflows, subagents for parallel investigation, MCP servers that connect agents to clusters, metrics and CI/CD, and hooks for guardrails. Agents run read-only by default; any change needs a stated blast radius and explicit human approval.</p>
+    <ul>
+      <li><a href="/AI-Agents-and-Helm-Chart-Upgrades/">How AI Agents Changed My Helm Chart Upgrade Routine</a></li>
+      <li><a href="/AKS-Issue-Analyzer-Claude-Skill/">Teaching Claude to Triage My AKS Clusters Before I Even Look</a></li>
+    </ul>
+    <h2>About This Blog</h2>
+    <p>sysadminas.eu documents what I learn on the job. Posts cover practical Kubernetes and Azure topics, GitOps patterns, security tooling, and how AI is changing day-to-day platform engineering work. I write to share what I pick up and to give back to the community that has taught me most of what I know.</p>
+    <p class="mono"><a href={SITE.cvPath} download>$ wget cv-andrej-trusevic.pdf</a></p>
+  </article>
+</Base>

@@ -58,3 +58,7 @@ footer.site-footer { border-top: 1px solid var(--border); margin-top: 4rem; padd
 .post-excerpt { grid-column: 2; margin: 0; font: .9rem var(--font-sans); }
 @media (max-width: 640px) { .post-row { grid-template-columns: 1fr; } .post-tags, .post-excerpt { grid-column: 1; } }
 .pager { display: flex; justify-content: space-between; font-size: .85rem; padding: 1rem 0; }
+
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.cert { min-height: 270px; }
+.tag-cloud { display: flex; flex-wrap: wrap; gap: .4rem .9rem; font-size: .85rem; }
