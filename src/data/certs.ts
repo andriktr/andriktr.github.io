@@ -1,4 +1,4 @@
-// Credly badge ids, in display order (from the old _pages/certifications.html)
+// Credly badge ids, in display order
 export const CERT_BADGE_IDS = [
   "59677bc1-f834-4d4b-b5e9-2defdde6c2d6",
   "d5148f53-ce13-45fa-84ca-d732246dd0fa",
