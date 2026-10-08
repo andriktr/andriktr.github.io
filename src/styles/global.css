@@ -50,3 +50,11 @@ footer.site-footer { border-top: 1px solid var(--border); margin-top: 4rem; padd
   .toc-col { order: -1; }
   .toc { position: static; border: 1px solid var(--border); padding: .6rem .9rem; }
 }
+.hero { padding: 2.5rem 0 1.5rem; } .hero h1 { font: 700 1.4rem var(--font-mono); margin: .3rem 0; }
+.post-list { list-style: none; padding: 0; margin: .5rem 0 2rem; font-family: var(--font-mono); }
+.post-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: .25rem 1rem; padding: .7rem 0; border-bottom: 1px dashed var(--border); }
+.post-title { color: var(--fg-strong); font-family: var(--font-sans); font-weight: 600; }
+.post-tags { grid-column: 2; font-size: .75rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+.post-excerpt { grid-column: 2; margin: 0; font: .9rem var(--font-sans); }
+@media (max-width: 640px) { .post-row { grid-template-columns: 1fr; } .post-tags, .post-excerpt { grid-column: 1; } }
+.pager { display: flex; justify-content: space-between; font-size: .85rem; padding: 1rem 0; }

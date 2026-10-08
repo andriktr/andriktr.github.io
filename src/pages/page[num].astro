@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Prompt from '../components/Prompt.astro';
+import PostList from '../components/PostList.astro';
+import Pagination from '../components/Pagination.astro';
+import { SITE } from '../config';
+import { getPublishedPosts, type Post } from '../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  const total = Math.ceil(posts.length / SITE.postsPerPage);
+  return Array.from({ length: Math.max(0, total - 1) }, (_, i) => {
+    const n = i + 2;
+    return { params: { num: String(n) }, props: { n, total, posts: posts.slice((n - 1) * SITE.postsPerPage, n * SITE.postsPerPage) } };
+  });
+}
+const { n, total, posts } = Astro.props as { n: number; total: number; posts: Post[] };
+---
+<Base title={`Posts — page ${n}`}>
+  <Prompt cmd={`ls -t posts/ | sed -n '${(n - 1) * SITE.postsPerPage + 1},${n * SITE.postsPerPage}p'`} />
+  <PostList posts={posts} />
+  <Pagination current={n} total={total} />
+</Base>
