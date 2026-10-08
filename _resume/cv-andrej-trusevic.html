@@ -7,88 +7,206 @@
   Source for public/assets/docs/cv-andrej-trusevic.pdf. Regenerate with:
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --no-pdf-header-footer \
     --print-to-pdf=public/assets/docs/cv-andrej-trusevic.pdf _resume/cv-andrej-trusevic.html
+  Fonts load from node_modules (run `npm ci` first); Helvetica is the fallback.
 -->
 <style>
-  @page { size: A4; margin: 0; }
-  :root { --side: #2c3e48; --side-w: 33%; --muted: #a9b4ba; }
+  @font-face { font-family: Inter; font-weight: 400; src: url(../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2) format('woff2'); }
+  @font-face { font-family: Inter; font-weight: 600; src: url(../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2) format('woff2'); }
+  @font-face { font-family: Inter; font-weight: 700; src: url(../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: Inter; font-weight: 800; src: url(../node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400; src: url(../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2) format('woff2'); }
+
+  @page { size: A4; margin: 14mm 14mm 12mm; }
+  :root {
+    --accent: #0f766e;
+    --accent-soft: #e6f3f1;
+    --accent-line: #cfe3e0;
+    --ink: #1a1f24;
+    --muted: #5b6670;
+  }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
-    font-family: Helvetica, Arial, sans-serif;
-    color: #111;
-    font-size: 10.5pt;
-    line-height: 1.4;
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    font-size: 9.6pt;
+    line-height: 1.45;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  /* Fixed element repeats on every printed page, so the sidebar colour runs full height */
-  .side-bg { position: fixed; top: 0; left: 0; bottom: 0; width: var(--side-w); background: var(--side); z-index: -1; }
-  .page { display: grid; grid-template-columns: var(--side-w) 1fr; }
-  aside { color: #fff; padding: 18mm 8mm 12mm 9mm; }
-  main { padding: 18mm 12mm 12mm 9mm; }
-  /* Repeat top padding on every printed page instead of only the first */
-  aside, main { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  a { color: inherit; text-decoration: none; }
+  ul { margin: 0; padding-left: 15px; }
+  li { margin-bottom: 2px; }
+  li::marker { color: var(--accent); }
+  p { margin: 0; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
 
-  aside h2 { font-weight: normal; font-size: 13pt; margin: 0 0 4px; }
-  aside section { margin-bottom: 22px; }
-  aside p, aside li { margin: 0; }
-  aside .muted { color: var(--muted); }
-  aside ul.plain { list-style: none; padding: 0; }
-  aside ul.plain li { margin-bottom: 3px; }
-  aside ul.certs { padding-left: 14px; font-size: 8pt; line-height: 1.35; }
-  aside ul.certs li { margin-bottom: 1px; }
-  aside h3 { font-size: 8.5pt; margin: 0 0 4px; }
-  aside a { color: #fff; text-decoration: none; }
+  /* Header */
+  header {
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;
+    border-bottom: 3px solid var(--accent); padding-bottom: 10px;
+  }
+  h1 { font-size: 27pt; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin: 0 0 4px; }
+  .tagline { color: var(--accent); font-weight: 600; font-size: 10.5pt; }
+  .contact { text-align: right; font-size: 8.3pt; color: var(--muted); line-height: 1.55; white-space: nowrap; }
+  .summary { margin: 11px 0 14px; font-size: 9.8pt; }
 
-  h1 { font-weight: normal; font-size: 27pt; margin: 0 0 4px; }
-  .headline { margin: 0 0 20px; font-size: 11pt; }
-  .muted-main { color: #9aa0a4; }
-  main h2 { font-weight: normal; font-size: 16pt; margin: 18px 0 10px; }
-  .company { font-weight: bold; font-size: 11.5pt; margin: 0; }
-  .role { font-weight: bold; margin: 0; }
-  .role-plain { margin: 10px 0 0; font-size: 11pt; }
-  .dates { margin: 0 0 10px; }
-  main h4 { font-size: 10.5pt; margin: 16px 0 4px; }
-  main ul { margin: 0; padding-left: 18px; }
-  main li { margin-bottom: 3px; }
-  main p { margin: 0 0 6px; }
-  .rule { width: 48px; border-top: 2px solid #888; margin: 22px 0 0; }
-  .job { break-inside: avoid; }
+  /* Columns */
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 54mm; gap: 9mm; }
+  h2 {
+    font-size: 8.6pt; font-weight: 800; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 8px;
+  }
+  section + section { margin-top: 16px; }
+
+  /* Timeline */
+  .timeline { border-left: 2px solid var(--accent-line); padding-left: 13px; margin-left: 4px; }
+  .job { position: relative; padding-bottom: 12px; }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ''; position: absolute; left: -19px; top: 4px;
+    width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 3px #fff;
+  }
+  .job.past::before { background: #fff; border: 2px solid var(--accent); }
+  .role { font-weight: 700; font-size: 10.3pt; }
+  .org { color: var(--accent); font-weight: 600; }
+  .dates { font-size: 8.3pt; color: var(--muted); margin-bottom: 5px; }
+  .job p { margin-bottom: 6px; }
+  h3 { font-size: 9pt; font-weight: 700; margin: 9px 0 3px; break-after: avoid; }
+  .block { break-inside: avoid; }
+  .sub { margin-top: 9px; }
+
+  /* Side column */
+  aside h3 { margin: 0 0 4px; font-size: 8.3pt; color: var(--muted); font-weight: 600; }
+  .chips { margin-bottom: 9px; }
+  .chip {
+    display: inline-block; padding: 1.5px 7px; margin: 0 3px 4px 0;
+    border-radius: 999px; background: var(--accent-soft); color: #0f5f58;
+    font-size: 8.2pt; font-weight: 600;
+  }
+  .badge {
+    border: 1.5px solid var(--accent); border-radius: 6px; padding: 6px 8px; margin-bottom: 7px;
+    font-weight: 700; font-size: 9pt;
+  }
+  .badge span { display: block; font-weight: 400; font-size: 7.8pt; color: var(--muted); }
+  ul.certs { list-style: none; padding: 0; font-size: 8pt; line-height: 1.35; }
+  ul.certs li { margin-bottom: 2px; padding-left: 9px; position: relative; }
+  ul.certs li::before { content: ''; position: absolute; left: 0; top: 5px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+  .lang p { margin-bottom: 2px; }
+  .lang span { color: var(--muted); font-size: 8.2pt; }
 </style>
 </head>
 <body>
-<div class="side-bg"></div>
-<div class="page">
+<header>
+  <div>
+    <h1>Andrej Trusevic</h1>
+    <p class="tagline">Cloud Engineer · Kubernetes &amp; Azure · CNCF Golden Kubestronaut</p>
+  </div>
+  <div class="contact">
+    <a href="mailto:andriktr@gmail.com">andriktr@gmail.com</a><br>
+    +37065030045<br>
+    <a href="https://sysadminas.eu">sysadminas.eu</a><br>
+    <a href="https://www.linkedin.com/in/andrej-trusevic-53879a7a">linkedin.com/in/andrej-trusevic-53879a7a</a><br>
+    Lithuania
+  </div>
+</header>
+
+<p class="summary">Cloud Engineer with 18+ years in IT, including 13 years of on-prem infrastructure and cloud engineering at If. Specializing in enterprise Kubernetes platform architecture, security, automation and maintenance. Responsible for Azure Kubernetes Service (AKS) platforms powering core business workloads, and for applying agentic AI to day-to-day platform operations.</p>
+
+<div class="cols">
+  <main>
+    <section>
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="job">
+          <p class="role">Cloud Engineer, Kubernetes and Azure</p>
+          <p class="dates"><span class="org">If Insurance (If P&amp;C Insurance)</span> · November 2013 – Present · Lithuania</p>
+
+          <div class="block">
+            <h3>Main responsibilities</h3>
+            <ul>
+              <li>Design, build and operate production-grade AKS clusters</li>
+              <li>Architect secure, scalable enterprise Kubernetes platforms</li>
+              <li>Implement RBAC, Network Policies, Pod Security, cluster hardening</li>
+              <li>Manage Kubernetes upgrades and lifecycle strategy</li>
+              <li>Develop Infrastructure as Code (Terraform, ARM, Helm, Ansible)</li>
+              <li>Implement CI/CD and GitOps (Azure DevOps, Flux, ArgoCD)</li>
+              <li>Design full Azure platform architecture (compute, identity, security, governance, networking)</li>
+              <li>Drive automation using Bash, PowerShell, and Python</li>
+              <li>Ensure platform reliability, security, and standardization</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>Agentic AI &amp; AI-assisted operations</h3>
+            <ul>
+              <li>Build Claude Code skills that turn platform runbooks and operational knowledge into reusable, reviewable agent workflows (upgrades, incident triage, routine maintenance)</li>
+              <li>Design agentic workflows with subagents for parallel investigation, MCP servers that connect agents to clusters, metrics, docs and CI/CD, and hooks and loops for automation and guardrails</li>
+              <li>Apply safety guardrails for agents in production: read-only by default, with any change needing a stated blast radius and explicit human approval</li>
+              <li>Share AI-assisted platform engineering practices publicly on sysadminas.eu</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>Core expertise</h3>
+            <ul>
+              <li>Kubernetes architecture &amp; security</li>
+              <li>Azure platform engineering (end-to-end cloud infrastructure)</li>
+              <li>Infrastructure as Code &amp; automation</li>
+              <li>Bash, PowerShell &amp; Python scripting</li>
+              <li>Agentic AI for platform engineering (Claude Code, skills, MCP, subagents)</li>
+              <li>Linux systems engineering and administration</li>
+              <li>Virtualization platforms (Hyper-V, VMware)</li>
+              <li>Windows Server administration (Active Directory, DNS, DHCP, Failover cluster, MSSQL etc.)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job past block">
+          <p class="role">IT Administrator</p>
+          <p class="dates"><span class="org">Palink UAB</span> · February 2011 – November 2013 (2 years 10 months) · Vilnius</p>
+          <ul>
+            <li>Server installation, maintenance and configuration</li>
+            <li>Windows server administration (Active Directory, MS Exchange and other)</li>
+            <li>Network hardware configuration</li>
+            <li>Relational databases maintenance (most in „Interbase“ database management system environment)</li>
+            <li>Other IT systems maintenance and IT problems solving</li>
+          </ul>
+        </div>
+
+        <div class="job past block">
+          <p class="role">IT Consultant</p>
+          <p class="dates"><span class="org">Palink UAB</span> · March 2008 – February 2011 (3 years)</p>
+          <p>IT systems maintenance and IT problems solving</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Education</h2>
+      <p class="role">Informatics Engineering Bachelor, Information Systems</p>
+      <p class="dates"><span class="org">Vilnius College of Higher Education</span> · 2004 – 2008</p>
+    </section>
+  </main>
+
   <aside>
     <section>
-      <h2>Contact</h2>
-      <p>+37065030045 <span class="muted">(Mobile)</span></p>
-      <p><a href="mailto:andriktr@gmail.com">andriktr@gmail.com</a></p>
-      <p><a href="https://www.linkedin.com/in/andrej-trusevic-53879a7a">linkedin.com/in/andrej-trusevic-53879a7a</a> <span class="muted">(LinkedIn)</span></p>
-      <p><a href="https://sysadminas.eu">sysadminas.eu</a> <span class="muted">(Blog)</span></p>
+      <h2>Skills</h2>
+      <h3>Platform</h3>
+      <div class="chips"><span class="chip">AKS</span><span class="chip">Kubernetes</span><span class="chip">Microsoft Azure</span><span class="chip">Linux</span></div>
+      <h3>IaC &amp; GitOps</h3>
+      <div class="chips"><span class="chip">Terraform</span><span class="chip">Helm</span><span class="chip">Ansible</span><span class="chip">Flux</span><span class="chip">Argo CD</span><span class="chip">Azure DevOps</span></div>
+      <h3>Agentic AI</h3>
+      <div class="chips"><span class="chip">Claude Code</span><span class="chip">Skills</span><span class="chip">Subagents</span><span class="chip">MCP</span></div>
+      <h3>Scripting</h3>
+      <div class="chips"><span class="chip">Bash</span><span class="chip">PowerShell</span><span class="chip">Python</span></div>
     </section>
 
     <section>
-      <h2>Top Skills</h2>
-      <ul class="plain">
-        <li>Azure Kubernetes Service (AKS)</li>
-        <li>Microsoft Azure</li>
-        <li>Kubernetes</li>
-        <li>Agentic AI / Claude Code</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Languages</h2>
-      <p>English <span class="muted">(Professional Working)</span></p>
-      <p>Russian <span class="muted">(Native or Bilingual)</span></p>
-      <p>Lithuanian <span class="muted">(Native or Bilingual)</span></p>
-    </section>
-
-    <section>
-      <h3>Certifications:</h3>
+      <h2>Certifications</h2>
+      <div class="badge">CNCF Golden Kubestronaut<span>Every CNCF Kubernetes certification</span></div>
       <ul class="certs">
-        <li>CNCF Golden Kubestronaut</li>
         <li>Certified Kubernetes Administrator (CKA)</li>
         <li>Certified Kubernetes Application Developer (CKAD)</li>
         <li>Certified Kubernetes Security Specialist (CKS)</li>
@@ -108,75 +226,14 @@
         <li>Microsoft Certified: Windows Server Administrator</li>
       </ul>
     </section>
+
+    <section class="lang">
+      <h2>Languages</h2>
+      <p>English <span>· Professional working</span></p>
+      <p>Russian <span>· Native or bilingual</span></p>
+      <p>Lithuanian <span>· Native or bilingual</span></p>
+    </section>
   </aside>
-
-  <main>
-    <h1>Andrej Trusevic</h1>
-    <p class="headline"><strong>CNCF Golden Kubestronaut</strong> | Cloud Engineer at If Insurance <span class="muted-main">Lithuania</span></p>
-
-    <h2>Experience</h2>
-
-    <p class="company">If Insurance (If P&amp;C Insurance)</p>
-    <p class="role">Cloud Engineer Kubernetes and Azure</p>
-    <p class="dates">November 2013 - Present <span class="muted-main">Lithuania</span></p>
-
-    <p>Cloud Engineer with 18+ years in IT, including 13 years of on-prem infrastructure and cloud engineering at If. Specializing in enterprise Kubernetes platform architecture, security, automation and maintenance. Responsible for Azure Kubernetes Service (AKS) platforms powering core business workloads, and for applying agentic AI to day-to-day platform operations.</p>
-
-    <h4>Main responsibilities:</h4>
-    <ul>
-      <li>Design, build and operate production-grade AKS clusters</li>
-      <li>Architect secure, scalable enterprise Kubernetes platforms</li>
-      <li>Implement RBAC, Network Policies, Pod Security, cluster hardening</li>
-      <li>Manage Kubernetes upgrades and lifecycle strategy</li>
-      <li>Develop Infrastructure as Code (Terraform, ARM, Helm, Ansible)</li>
-      <li>Implement CI/CD and GitOps (Azure DevOps, Flux, ArgoCD)</li>
-      <li>Design full Azure platform architecture (compute, identity, security, governance, networking)</li>
-      <li>Drive automation using Bash, PowerShell, and Python</li>
-      <li>Ensure platform reliability, security, and standardization</li>
-    </ul>
-
-    <h4>Agentic AI &amp; AI-assisted operations:</h4>
-    <ul>
-      <li>Build Claude Code skills that turn platform runbooks and operational knowledge into reusable, reviewable agent workflows (upgrades, incident triage, routine maintenance)</li>
-      <li>Design agentic workflows with subagents for parallel investigation, MCP servers that connect agents to clusters, metrics, docs and CI/CD, and hooks and loops for automation and guardrails</li>
-      <li>Apply safety guardrails for agents in production: read-only by default, with any change needing a stated blast radius and explicit human approval</li>
-      <li>Share AI-assisted platform engineering practices publicly on sysadminas.eu</li>
-    </ul>
-
-    <h4>Core Expertise:</h4>
-    <ul>
-      <li>Kubernetes architecture &amp; security</li>
-      <li>Azure platform engineering (end-to-end cloud infrastructure)</li>
-      <li>Infrastructure as Code &amp; automation</li>
-      <li>Bash, PowerShell &amp; Python scripting</li>
-      <li>Agentic AI for platform engineering (Claude Code, skills, MCP, subagents)</li>
-      <li>Linux systems engineering and administration</li>
-      <li>Virtualization platforms (Hyper-V, VMware)</li>
-      <li>Windows Server administration (Active Directory, DNS, DHCP, Failover cluster, MSSQL etc.)</li>
-    </ul>
-
-    <div class="job">
-      <p class="company" style="margin-top:22px">Palink UAB</p>
-      <p>5 years 9 months</p>
-      <p class="role-plain">IT Administrator</p>
-      <p class="dates">February 2011 - November 2013 (2 years 10 months) <span class="muted-main">Vilnius</span></p>
-      <ul>
-        <li>Server installation, maintenance and configuration</li>
-        <li>Windows server administration (Active Directory, MS Exchange and other)</li>
-        <li>Network hardware configuration</li>
-        <li>Relational databases maintenance (most in „Interbase“ database management system environment)</li>
-        <li>Other IT systems maintenance and IT problems solving</li>
-      </ul>
-      <p class="role-plain">IT Consultant</p>
-      <p class="dates">March 2008 - February 2011 (3 years)</p>
-      <p>IT systems maintenance and IT problems solving</p>
-    </div>
-
-    <div class="rule"></div>
-    <h2>Education</h2>
-    <p style="font-size:11pt">Vilnius College of Higher Education</p>
-    <p>Informatics Engineering Bachelor, Information Systems · (2004 - 2008)</p>
-  </main>
 </div>
 </body>
 </html>
