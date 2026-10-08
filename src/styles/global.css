@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/inter/latin-700.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '@fontsource/jetbrains-mono/latin-600.css';
 @import './tokens.css';
 *, *::before, *::after { box-sizing: border-box; }
 html { background: var(--bg); color: var(--fg); font-family: var(--font-sans); line-height: 1.65; }
@@ -29,6 +33,7 @@ h1, h2, h3, h4 { color: var(--fg-strong); line-height: 1.25; }
 .astro-code { position: relative; font-family: var(--font-mono); font-size: .85rem; border: 1px solid var(--border); border-radius: 4px; padding: 2rem 1rem 1rem; overflow-x: auto; }
 .astro-code, .astro-code span { color: var(--shiki-dark); background-color: var(--shiki-dark-bg); }
 :root[data-theme='light'] .astro-code, :root[data-theme='light'] .astro-code span { color: var(--shiki-light); background-color: var(--shiki-light-bg); }
+:root[data-theme='light'] .astro-code span[style*='--shiki-light:#E36209'] { color: #b34700; }
 .code-lang { position: absolute; top: .4rem; left: .75rem; font-size: .7rem; color: var(--muted); }
 .code-copy { position: absolute; top: .3rem; right: .5rem; font: .7rem var(--font-mono); color: var(--muted); background: none; border: 1px solid var(--border); border-radius: 3px; cursor: pointer; }
 .notice { border-left: 2px solid var(--accent-2); background: var(--notice); padding: .6rem .9rem; margin: 1.25rem 0; }
@@ -62,3 +67,5 @@ footer.site-footer { border-top: 1px solid var(--border); margin-top: 4rem; padd
 .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
 .cert { min-height: 270px; }
 .tag-cloud { display: flex; flex-wrap: wrap; gap: .4rem .9rem; font-size: .85rem; }
+
+.prose p a, .prose li a, footer.site-footer a { text-decoration: underline; text-underline-offset: .15em; }
