@@ -17,14 +17,14 @@ tags:
   - Linux
   - Security
   - Containers
-  - Images
+  - Image
   - Cosign
   - Kyverno
   - Azure DevOps
   - DevOps
   - Pipeline
   - CI/CD
-  - Keyvault
+  - KeyVault
   - Secrets
   - Keys
 toc: true

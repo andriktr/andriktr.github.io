@@ -16,6 +16,9 @@ describe('migration helpers', () => {
     expect(normaliseTag('Github')).toBe('GitHub');
     expect(normaliseTag('AzureDevOps')).toBe('Azure DevOps');
     expect(normaliseTag('Terraform')).toBe('Terraform');
+    expect(normaliseTag('Keyvault')).toBe('KeyVault');
+    expect(normaliseTag('kyverno')).toBe('Kyverno');
+    expect(normaliseTag('Images')).toBe('Image');
   });
   it('transforms frontmatter and dedupes tags', () => {
     const out = transformFrontmatter(

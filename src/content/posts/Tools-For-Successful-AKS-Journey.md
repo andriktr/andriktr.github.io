@@ -43,7 +43,7 @@ tags:
   - IaC
   - ServiceMesh
   - kube-capacity
-  - kyverno
+  - Kyverno
 toc: true
 draft: false
 ---
