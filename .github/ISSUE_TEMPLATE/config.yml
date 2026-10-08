@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or comment about a post
+    url: https://github.com/andriktr/andriktr.github.io/discussions
+    about: Ask in Discussions. Comments on sysadminas.eu posts end up there too.
