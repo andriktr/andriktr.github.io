@@ -54,6 +54,20 @@ Images go in `public/assets/images/postNN/` and are referenced as `/assets/image
   --print-to-pdf=public/assets/docs/cv-andrej-trusevic.pdf _resume/cv-andrej-trusevic.html
 ```
 
+## Cutover and rollback
+
+1. Enable Discussions on the repo and install the giscus app; put `repoId` and `categoryId` in `src/config.ts`.
+2. Create the GoatCounter site with code `sysadminas`.
+3. In Settings, Pages, set Source to **GitHub Actions** BEFORE merging `astro` into `master`. Merging first would make GitHub's Jekyll build serve a broken site.
+4. Merge `astro` into `master` and watch the Pages workflow. Then verify every legacy URL and the Helm repo index:
+
+   ```bash
+   while read -r u; do printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code}' "https://sysadminas.eu$u")" "$u"; done < scripts/legacy-urls.txt
+   curl -sI https://sysadminas.eu/helm-charts/index.yaml | head -1
+   ```
+
+5. Rollback: revert the merge commit and push, then switch Pages Source back to "Deploy from a branch: master /(root)".
+
 ## Notes
 
 - `npm run migrate` converted the old Jekyll posts into `src/content/posts/`. It was a one-off and has already been run. The Jekyll sources it reads (`_posts`, `_drafts`) have been removed, so the script is kept for reference only.
