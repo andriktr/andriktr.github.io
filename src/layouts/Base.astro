@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import { SITE } from '../config';
+interface Props { title?: string; description?: string; ogType?: 'website' | 'article' }
+const { title, description = SITE.description, ogType = 'website' } = Astro.props;
+const path = Astro.url.pathname;
+const fullTitle = title ? `${title} | ${SITE.title}` : `${SITE.author} | ${SITE.title}`;
+const canonical = new URL(path, SITE.url).href;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:title" content={title ?? SITE.title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content={SITE.twitter} />
+  <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/feed.xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <script is:inline>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t})();</script>
+  <slot name="head" />
+</head>
+<body>
+  <Nav path={path} />
+  <main class="wrap"><slot /></main>
+  <footer class="site-footer"><div class="wrap">© {new Date().getUTCFullYear()} {SITE.author} · <a href="/feed.xml">rss</a> · <a href="https://github.com/andriktr">github</a> · <a href="https://www.linkedin.com/in/andrej-trusevic-53879a7a/">linkedin</a></div></footer>
+</body>
+</html>
