@@ -86,15 +86,14 @@
     font-size: 8.2pt; font-weight: 600;
   }
   .badge {
-    position: relative;
-    border: 1.5px solid #c99a16; border-radius: 7px; padding: 7px 9px 7px 30px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+    border: 1.5px solid #c99a16; border-radius: 7px; padding: 7px 9px; margin-bottom: 8px;
     background: linear-gradient(135deg, #fffaeb 0%, #fdeeb5 55%, #f6d77c 100%);
     color: #5c4300; font-weight: 800; font-size: 9pt;
   }
-  .badge::before {
-    content: '\2605'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
-    font-size: 14pt; line-height: 1; color: #d4a20f;
-  }
+  /* Official logo, cropped to the helmet (the wordmark below it is too small to read here) */
+  .badge .logo { flex: none; width: 42px; height: 34px; overflow: hidden; }
+  .badge .logo img { display: block; width: 53px; margin: -1px 0 0 -5.5px; }
   .badge span { display: block; font-weight: 500; font-size: 7.8pt; color: #8a6a1c; }
   .gold { color: #a87c06; }
   ul.certs { list-style: none; padding: 0; font-size: 8pt; line-height: 1.35; }
@@ -212,7 +211,7 @@
 
     <section>
       <h2>Certifications</h2>
-      <div class="badge">CNCF Golden Kubestronaut<span>Every CNCF Kubernetes certification</span></div>
+      <div class="badge"><div class="logo"><img src="../public/assets/images/post28/1.png" alt=""></div><div>CNCF Golden Kubestronaut<span>Every CNCF Kubernetes certification</span></div></div>
       <ul class="certs">
         <li>Certified Kubernetes Administrator (CKA)</li>
         <li>Certified Kubernetes Application Developer (CKAD)</li>
