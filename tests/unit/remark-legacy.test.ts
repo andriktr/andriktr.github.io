@@ -46,4 +46,17 @@ describe('remark-legacy', () => {
     const out = await render('Careful here.\n{: .notice—info}');
     expect(out).toBe('<aside class="notice notice--info">Careful here.</aside>');
   });
+  it('adds empty alt, lazy loading and async decoding to raw html img tags lacking them', async () => {
+    const out = await render('<img align="right" width="400" height="300" src="../assets/images/post31/1.png">\n');
+    expect(out).toContain('alt=""');
+    expect(out).toContain('loading="lazy"');
+    expect(out).toContain('decoding="async"');
+  });
+  it('keeps existing alt/loading on raw html img tags', async () => {
+    const out = await render('<img alt="Diagram" loading="eager" src="/a.png">\n');
+    expect(out).toContain('alt="Diagram"');
+    expect(out).toContain('loading="eager"');
+    expect(out).not.toContain('alt=""');
+    expect((out.match(/loading=/g) || []).length).toBe(1);
+  });
 });

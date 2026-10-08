@@ -20,6 +20,18 @@ function applyClasses(node: RootContent, classes: string[]) {
   node.data = { ...node.data, hName: 'aside', hProperties: { className: ['notice', ...notice.filter((c) => c !== 'notice')] } };
 }
 
+// legacy raw <img> tags are decorative covers: give them empty alt and lazy/async loading when absent
+function fixImgTags(html: string): string {
+  return html.replace(/<img\b[^>]*>/gi, (tag) => {
+    const add = [
+      /\salt\s*=/i.test(tag) ? '' : ' alt=""',
+      /\sloading\s*=/i.test(tag) ? '' : ' loading="lazy"',
+      /\sdecoding\s*=/i.test(tag) ? '' : ' decoding="async"',
+    ].join('');
+    return add ? tag.replace(/^<img\b/i, `<img${add}`) : tag;
+  });
+}
+
 const fixUrl = (u: string) => (u.startsWith('../assets/') ? u.slice(2) : u);
 
 export default function remarkLegacy() {
@@ -38,6 +50,7 @@ export default function remarkLegacy() {
           return [SKIP, index];
         }
         node.value = node.value.replace(/(src|href)="\.\.\/assets\//g, '$1="/assets/');
+        node.value = fixImgTags(node.value);
         return;
       }
       if (node.type !== 'paragraph' || !parent || index === undefined) return;
