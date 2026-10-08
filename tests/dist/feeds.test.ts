@@ -21,9 +21,14 @@ describe('feeds and metadata', () => {
   it('GoatCounter script is present', () => {
     expect(read('/index.html')).toContain('data-goatcounter="https://sysadminas.goatcounter.com/count"');
   });
-  it('post pages ship no Giscus while ids are empty', () => {
+  it('post pages load Giscus for this repo with pathname mapping', () => {
     const html = read('/Part-1-AKS/index.html');
-    expect(html).not.toContain('giscus.app/client.js');
-    expect(html).not.toContain('giscus-frame');
+    expect(html).toContain('giscus.app/client.js');
+    expect(html).toContain('data-repo-id="MDEwOlJlcG9zaXRvcnkzMjY1OTExMjM="');
+    expect(html).toContain('data-category-id="DIC_kwDOE3dik84DHVDs"');
+    expect(html).toContain('data-mapping="pathname"');
+  });
+  it('non-post pages do not load Giscus', () => {
+    expect(read('/index.html')).not.toContain('giscus.app/client.js');
   });
 });

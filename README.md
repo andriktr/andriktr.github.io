@@ -56,7 +56,7 @@ Images go in `public/assets/images/postNN/` and are referenced as `/assets/image
 
 ## Cutover and rollback
 
-1. Enable Discussions on the repo and install the giscus app; put `repoId` and `categoryId` in `src/config.ts`.
+1. Giscus: Discussions are enabled and the giscus app is installed; `repoId` and `categoryId` are set in `src/config.ts` (mapping: pathname, category: Announcements).
 2. Create the GoatCounter site with code `sysadminas`.
 3. In Settings, Pages, set Source to **GitHub Actions** BEFORE merging `astro` into `master`. Merging first would make GitHub's Jekyll build serve a broken site.
 4. Merge `astro` into `master` and watch the Pages workflow. Then verify every legacy URL and the Helm repo index:

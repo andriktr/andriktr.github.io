@@ -12,9 +12,9 @@ export const SITE = {
   goatcounter: 'https://sysadminas.goatcounter.com/count',
   giscus: {
     repo: 'andriktr/andriktr.github.io',
-    repoId: '',        // filled in Task 11 from giscus.app
+    repoId: 'MDEwOlJlcG9zaXRvcnkzMjY1OTExMjM=',
     category: 'Announcements',
-    categoryId: '',    // filled in Task 11 from giscus.app
+    categoryId: 'DIC_kwDOE3dik84DHVDs',
   },
 } as const;
 
