@@ -1,0 +1,31 @@
+---
+import { SITE } from '../config';
+const g = SITE.giscus;
+const enabled = Boolean(g.repoId && g.categoryId);
+---
+{enabled && (
+  <section class="comments">
+    <p class="prompt">$ comments --thread</p>
+    <script is:inline src="https://giscus.app/client.js" data-repo={g.repo} data-repo-id={g.repoId}
+      data-category={g.category} data-category-id={g.categoryId} data-mapping="pathname" data-strict="0"
+      data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme"
+      data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script>
+    <script is:inline>
+      (function () {
+        var ORIGIN = 'https://giscus.app';
+        var frame = function () { return document.querySelector('iframe.giscus-frame'); };
+        var sync = function (theme) {
+          var f = frame();
+          if (f && f.contentWindow) f.contentWindow.postMessage({ giscus: { setConfig: { theme: theme } } }, ORIGIN);
+        };
+        document.addEventListener('theme-change', function (e) { sync(e.detail); });
+        window.addEventListener('message', function (e) {
+          if (e.origin !== ORIGIN || !e.data || typeof e.data !== 'object' || !('giscus' in e.data)) return;
+          var f = frame();
+          if (f && e.source !== f.contentWindow) return;
+          sync(document.documentElement.dataset.theme || 'dark');
+        });
+      })();
+    </script>
+  </section>
+)}

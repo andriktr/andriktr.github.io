@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import Prompt from '../../components/Prompt.astro';
+import PostList from '../../components/PostList.astro';
+import { getPublishedPosts } from '../../lib/posts';
+import { collectTags } from '../../lib/tags';
+export async function getStaticPaths() {
+  return collectTags(await getPublishedPosts()).map((t) => ({ params: { tag: t.slug }, props: { t } }));
+}
+const { t } = Astro.props;
+---
+<Base title={`#${t.slug}`}>
+  <Prompt cmd={`grep -l "#${t.slug}" posts/*`} />
+  <PostList posts={t.posts} />
+  <p class="mono"><a href="/tags/">← all tags</a></p>
+</Base>

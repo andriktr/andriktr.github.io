@@ -1,0 +1,20 @@
+---
+import { NAV } from '../config';
+import ThemeToggle from './ThemeToggle.astro';
+interface Props { path: string }
+const { path } = Astro.props;
+const crumb = path === '/' ? '' : path.replace(/\/$/, '').split('/').slice(0, 2).join('/');
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">~/sysadminas{crumb}</a>
+    <nav aria-label="Main">
+      {NAV.map((l) => (
+        <a href={l.href} download={'download' in l ? true : undefined}
+           aria-current={l.href === path ? 'page' : undefined}>[{l.label}]</a>
+      ))}
+      <button class="kbd" type="button" data-search-open aria-label="Search">/</button>
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>

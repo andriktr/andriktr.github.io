@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Prompt from '../components/Prompt.astro';
+import PostList from '../components/PostList.astro';
+import Pagination from '../components/Pagination.astro';
+import { SITE } from '../config';
+import { getPublishedPosts } from '../lib/posts';
+const posts = await getPublishedPosts();
+const total = Math.ceil(posts.length / SITE.postsPerPage);
+---
+<Base>
+  <section class="hero">
+    <Prompt cmd="whoami" />
+    <h1>{SITE.author} — {SITE.role}</h1>
+    <p class="mono muted"># {SITE.topics.join(' · ')}</p>
+  </section>
+  <Prompt cmd="ls -t posts/ | head -5" />
+  <PostList posts={posts.slice(0, SITE.postsPerPage)} />
+  <Pagination current={1} total={total} />
+</Base>
