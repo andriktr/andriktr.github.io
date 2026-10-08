@@ -86,10 +86,17 @@
     font-size: 8.2pt; font-weight: 600;
   }
   .badge {
-    border: 1.5px solid var(--accent); border-radius: 6px; padding: 6px 8px; margin-bottom: 7px;
-    font-weight: 700; font-size: 9pt;
+    position: relative;
+    border: 1.5px solid #c99a16; border-radius: 7px; padding: 7px 9px 7px 30px; margin-bottom: 8px;
+    background: linear-gradient(135deg, #fffaeb 0%, #fdeeb5 55%, #f6d77c 100%);
+    color: #5c4300; font-weight: 800; font-size: 9pt;
   }
-  .badge span { display: block; font-weight: 400; font-size: 7.8pt; color: var(--muted); }
+  .badge::before {
+    content: '\2605'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
+    font-size: 14pt; line-height: 1; color: #d4a20f;
+  }
+  .badge span { display: block; font-weight: 500; font-size: 7.8pt; color: #8a6a1c; }
+  .gold { color: #a87c06; }
   ul.certs { list-style: none; padding: 0; font-size: 8pt; line-height: 1.35; }
   ul.certs li { margin-bottom: 2px; padding-left: 9px; position: relative; }
   ul.certs li::before { content: ''; position: absolute; left: 0; top: 5px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
@@ -101,7 +108,7 @@
 <header>
   <div>
     <h1>Andrej Trusevic</h1>
-    <p class="tagline">Cloud Engineer · Kubernetes &amp; Azure · CNCF Golden Kubestronaut</p>
+    <p class="tagline">Cloud Engineer · Kubernetes &amp; Azure · <span class="gold">CNCF Golden Kubestronaut</span></p>
   </div>
   <div class="contact">
     <a href="mailto:andriktr@gmail.com">andriktr@gmail.com</a><br>
