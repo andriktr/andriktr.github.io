@@ -9,6 +9,7 @@ import { SITE } from '../config';
     <h1>Hello World. Welcome to sysadminas Cloud Blog.</h1>
     <p>I'm Andrej Trusevic, a Cloud Engineer focused on Kubernetes and Azure. I design and operate secure, scalable cloud-native infrastructure — from cluster architecture and GitOps delivery pipelines to security tooling and AI-assisted automation.</p>
     <h2>Certifications</h2>
+    <a href="/Golden-Kubestronaut/" class="about-badge"><img src="/assets/images/post28/1.png" alt="Golden Kubestronaut logo" width="140" height="140" loading="lazy" /></a>
     <p>I'm a <strong>Golden Kubestronaut</strong> — CNCF's recognition for practitioners who have earned every available Kubernetes and cloud-native certification. It's the highest tier in the Kubestronaut program, requiring a full sweep of CNCF credentials including CKA, CKS, CKAD, and the growing set of associate-level certifications (CGOA, CCA, CAPA, PCA, ICA, CNPA, KCA, and others). <a href="/certifications/">See all badges</a>.</p>
     <h2>What I Work With</h2>
     <ul>
@@ -28,3 +29,11 @@ import { SITE } from '../config';
     <p class="mono"><a href={SITE.cvPath} download>$ wget cv-andrej-trusevic.pdf</a></p>
   </article>
 </Base>
+
+<style>
+  .about-badge { float: right; margin: 0.25rem 0 1rem 1.5rem; }
+  .about-badge img { display: block; width: 140px; height: auto; }
+  @media (max-width: 600px) {
+    .about-badge { float: none; display: block; width: fit-content; margin: 0 auto 1rem; }
+  }
+</style>

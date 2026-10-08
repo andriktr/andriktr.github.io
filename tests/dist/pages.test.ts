@@ -24,6 +24,10 @@ describe('secondary pages', () => {
     expect(html).toMatch(/agentic AI/i);
     expect(html).toContain('href="/AI-Agents-and-Helm-Chart-Upgrades/"');
   });
+  it('about shows the Golden Kubestronaut logo linking to the post', () => {
+    const html = read('/about/index.html');
+    expect(html).toMatch(/<a href="\/Golden-Kubestronaut\/"[^>]*>\s*<img[^>]*src="\/assets\/images\/post28\/1\.png"[^>]*alt="Golden Kubestronaut logo"/);
+  });
   it('certifications renders 18 badges and loads Credly once', () => {
     const html = read('/certifications/index.html');
     expect((html.match(/data-share-badge-id=/g) ?? []).length).toBe(18);

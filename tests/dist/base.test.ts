@@ -21,6 +21,10 @@ describe('Base layout', () => {
   it('renders nav with a downloadable CV link', () => {
     expect(html()).toMatch(/href="\/assets\/docs\/cv-andrej-trusevic\.pdf"[^>]*download/);
   });
+  it('links an SVG favicon that exists', () => {
+    expect(html()).toMatch(/<link rel="icon" type="image\/svg\+xml" href="\/favicon\.svg"/);
+    expect(existsSync('dist/favicon.svg')).toBe(true);
+  });
   it('has canonical url', () => {
     expect(html()).toContain('<link rel="canonical" href="https://sysadminas.eu/"');
   });
