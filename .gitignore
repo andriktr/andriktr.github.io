@@ -28,5 +28,5 @@ _asset_bundler_cache
 _site
 
 # Astro
-dist/
-.astro/
+/dist/
+/.astro/
