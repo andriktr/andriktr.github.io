@@ -1,0 +1,25 @@
+---
+import type { MarkdownHeading } from 'astro';
+interface Props { headings: MarkdownHeading[] }
+const items = Astro.props.headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+{items.length >= 3 && (
+  <nav class="toc" aria-label="Contents">
+    <details open>
+      <summary class="mono">## contents</summary>
+      <ul>{items.map((h) => <li class={`d${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul>
+    </details>
+  </nav>
+)}
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.toc a')];
+  const byId = new Map(links.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+  const obs = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) {
+      links.forEach((a) => a.classList.remove('active'));
+      byId.get(e.target.id)?.classList.add('active');
+    }
+  }, { rootMargin: '0px 0px -70% 0px' });
+  byId.forEach((_, id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
+  if (matchMedia('(max-width: 1023px)').matches) document.querySelector('.toc details')?.removeAttribute('open');
+</script>

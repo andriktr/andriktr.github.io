@@ -35,3 +35,18 @@ h1, h2, h3, h4 { color: var(--fg-strong); line-height: 1.25; }
 .notice::before { content: '[NOTE] '; font-family: var(--font-mono); color: var(--accent-2); }
 .tag { color: var(--tag); font-family: var(--font-mono); }
 footer.site-footer { border-top: 1px solid var(--border); margin-top: 4rem; padding: 1.5rem 0; font: .8rem var(--font-mono); color: var(--muted); }
+.post-grid { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 2.5rem; padding-top: 1.5rem; }
+.post-grid article { min-width: 0; max-width: var(--measure); }
+.post-grid h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: .4rem 0; }
+.meta { font-size: .8rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+.toc-col { position: relative; }
+.toc { position: sticky; top: 1.5rem; font: .8rem var(--font-mono); border-left: 1px solid var(--border); padding-left: .9rem; }
+.toc summary { color: var(--fg); cursor: pointer; list-style: none; }
+.toc ul { list-style: none; padding: 0; margin: .5rem 0 0; }
+.toc li { margin: .3rem 0; } .toc li.d3 { padding-left: .9rem; }
+.toc a { color: var(--muted); } .toc a.active { color: var(--accent); } .toc a.active::before { content: '› '; }
+@media (max-width: 1023px) {
+  .post-grid { grid-template-columns: 1fr; }
+  .toc-col { order: -1; }
+  .toc { position: static; border: 1px solid var(--border); padding: .6rem .9rem; }
+}

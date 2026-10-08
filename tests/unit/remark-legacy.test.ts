@@ -42,4 +42,8 @@ describe('remark-legacy', () => {
     const out = await render('```yaml\nname: ${{ parameters.env }}\n```\n');
     expect(out).toContain('${{ parameters.env }}');
   });
+  it('restores class names mangled by smartypants dashes', async () => {
+    const out = await render('Careful here.\n{: .notice—info}');
+    expect(out).toBe('<aside class="notice notice--info">Careful here.</aside>');
+  });
 });

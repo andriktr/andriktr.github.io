@@ -1,0 +1,6 @@
+---
+import { tagSlug } from '../lib/tags';
+interface Props { tags: string[] }
+const { tags } = Astro.props;
+---
+{tags.map((t) => <a class="tag" href={`/tags/${tagSlug(t)}/`}>#{tagSlug(t)}</a>)}

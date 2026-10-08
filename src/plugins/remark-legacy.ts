@@ -8,7 +8,8 @@ const FA_OPEN = /^<i class="fa[rsb]? fa-[\w-]+">$/;
 
 function classesFrom(ial: string): string[] {
   return [...ial.matchAll(/\{:\s*([^}]*)\}/g)]
-    .flatMap((m) => m[1].split(/\s+/))
+    // Astro runs remark-smartypants before user plugins, which turns `notice--info` into `notice—info`
+    .flatMap((m) => m[1].replace(/—/g, '--').replace(/–/g, '-').split(/\s+/))
     .filter((t) => t.startsWith('.'))
     .map((t) => t.slice(1));
 }
