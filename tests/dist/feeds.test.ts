@@ -21,4 +21,9 @@ describe('feeds and metadata', () => {
   it('GoatCounter script is present', () => {
     expect(read('/index.html')).toContain('data-goatcounter="https://sysadminas.goatcounter.com/count"');
   });
+  it('post pages ship no Giscus while ids are empty', () => {
+    const html = read('/Part-1-AKS/index.html');
+    expect(html).not.toContain('giscus.app/client.js');
+    expect(html).not.toContain('giscus-frame');
+  });
 });
