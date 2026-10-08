@@ -19,7 +19,7 @@ describe('feeds and metadata', () => {
     expect(read('/robots.txt')).toContain('Sitemap: https://sysadminas.eu/sitemap-index.xml');
   });
   it('GoatCounter script is present', () => {
-    expect(read('/index.html')).toContain('data-goatcounter="https://sysadminas.goatcounter.com/count"');
+    expect(read('/index.html')).toContain('data-goatcounter="https://andriktr.goatcounter.com/count"');
   });
   it('post pages load Giscus for this repo with pathname mapping', () => {
     const html = read('/Part-1-AKS/index.html');

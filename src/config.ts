@@ -9,7 +9,7 @@ export const SITE = {
   twitter: '@andriktr',
   postsPerPage: 5,
   cvPath: '/assets/docs/cv-andrej-trusevic.pdf',
-  goatcounter: 'https://sysadminas.goatcounter.com/count',
+  goatcounter: 'https://andriktr.goatcounter.com/count',
   giscus: {
     repo: 'andriktr/andriktr.github.io',
     repoId: 'MDEwOlJlcG9zaXRvcnkzMjY1OTExMjM=',
