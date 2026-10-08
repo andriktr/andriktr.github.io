@@ -11,7 +11,7 @@
     const script = document.createElement('script'); script.src = '/pagefind/pagefind-ui.js';
     document.head.appendChild(css);
     loading = new Promise<void>((res, rej) => { script.onload = () => res(); script.onerror = () => rej(new Error('load failed')); document.head.appendChild(script); })
-      .then(() => { new (window as any).PagefindUI({ element: '#search', showSubResults: true, resetStyles: false }); })
+      .then(() => { document.getElementById('search')!.textContent = ''; new (window as any).PagefindUI({ element: '#search', showSubResults: true, resetStyles: false }); })
       .catch(() => {
         css.remove(); script.remove(); loading = null;
         document.getElementById('search')!.textContent = 'search is unavailable right now';
