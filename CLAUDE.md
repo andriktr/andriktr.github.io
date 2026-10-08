@@ -7,6 +7,7 @@ Personal blog of Andrej Trusevic (Kubernetes, Azure, GitOps, agentic AI). Astro 
 - **Never change the URL of a published post.** URLs come from `urlSlug` in front matter and are case-sensitive; `scripts/legacy-urls.txt` lists URLs that must keep working. Don't edit that file to make a check pass.
 - **Never commit real credentials** in post examples: keys, SAS tokens, service principal secrets, kubeconfigs, connection strings. Use obvious placeholders like `<storage-account-key>`.
 - Work through a pull request. Don't push to `master`.
+- Fill in `.github/pull_request_template.md` as the PR description: tick only what you verified, and link the issue with `Closes #N`.
 
 ## Before opening or updating a PR
 

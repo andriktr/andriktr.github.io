@@ -1,0 +1,82 @@
+name: New post
+description: Plan a blog post, and optionally have Claude draft it
+title: "Post: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in what you know; rough notes are fine. Keep the last box as is to have Claude open a PR with a **draft** post, or clear it to write the post yourself.
+  - type: textarea
+    id: topic
+    attributes:
+      label: Topic and goal
+      description: What the post is about and what the reader should be able to do afterwards.
+      placeholder: Upgrade AKS to 1.33 with Flux, without downtime for stateful workloads.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Key points and notes
+      description: Outline, findings, gotchas, links. Bullet points are fine.
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands, configs and output
+      description: What you actually ran. Replace real keys, tokens and connection strings with placeholders.
+      render: shell
+  - type: dropdown
+    id: tags
+    attributes:
+      label: Tags
+      description: Existing tags, so posts group together. Add new ones in the next box only if none fit.
+      multiple: true
+      options:
+        - Kubernetes
+        - AKS
+        - Azure
+        - Helm
+        - GitOps
+        - Flux
+        - Argo CD
+        - Security
+        - Platform Engineering
+        - Cloud Native
+        - CNCF
+        - Certification
+        - Terraform
+        - Prometheus
+        - Trivy
+        - Kyverno
+        - Docker
+        - Linux
+        - Bash
+        - PowerShell
+        - Azure DevOps
+        - CI/CD
+        - AI
+        - Claude Code
+  - type: input
+    id: other-tags
+    attributes:
+      label: Other tags
+      placeholder: Comma-separated
+  - type: dropdown
+    id: depth
+    attributes:
+      label: Depth
+      options:
+        - Hands-on walkthrough
+        - Short tip or fix
+        - Deep dive / lessons learned
+        - Certification or career
+    validations:
+      required: true
+  - type: textarea
+    id: claude
+    attributes:
+      label: Claude
+      description: Keep this to have Claude draft the post as a PR. Clear it to skip.
+      value: "@claude draft this as a new post (draft: true), following CLAUDE.md and the PR template."

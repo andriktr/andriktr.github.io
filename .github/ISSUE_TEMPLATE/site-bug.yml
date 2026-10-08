@@ -1,0 +1,26 @@
+name: Site problem
+description: Report a broken link, a wrong command in a post, or a display problem
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting. For general questions, use the comments under the post instead.
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      placeholder: https://sysadminas.eu/...
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong
+      description: What you expected, and what happened instead. For a wrong command, include what worked for you.
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Firefox 140 on Windows, Safari on iPhone…
