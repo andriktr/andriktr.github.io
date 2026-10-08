@@ -4,22 +4,31 @@
 </dialog>
 <script>
   const dialog = document.getElementById('search-dialog') as HTMLDialogElement;
-  let loaded = false;
+  let loading: Promise<void> | null = null;
+  function load(): Promise<void> {
+    if (loading) return loading;
+    const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/pagefind/pagefind-ui.css';
+    const script = document.createElement('script'); script.src = '/pagefind/pagefind-ui.js';
+    document.head.appendChild(css);
+    loading = new Promise<void>((res, rej) => { script.onload = () => res(); script.onerror = () => rej(new Error('load failed')); document.head.appendChild(script); })
+      .then(() => { new (window as any).PagefindUI({ element: '#search', showSubResults: true, resetStyles: false }); })
+      .catch(() => {
+        css.remove(); script.remove(); loading = null;
+        document.getElementById('search')!.textContent = 'search is unavailable right now';
+      });
+    return loading;
+  }
   async function open() {
-    if (!loaded) {
-      loaded = true;
-      const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/pagefind/pagefind-ui.css'; document.head.appendChild(css);
-      await new Promise<void>((res, rej) => { const s = document.createElement('script'); s.src = '/pagefind/pagefind-ui.js'; s.onload = () => res(); s.onerror = () => rej(); document.head.appendChild(s); })
-        .then(() => new (window as any).PagefindUI({ element: '#search', showSubResults: true, resetStyles: false }))
-        .catch(() => { document.getElementById('search')!.textContent = 'search index unavailable (run npm run build)'; });
-    }
-    dialog.showModal();
+    await load();
+    if (!dialog.open) dialog.showModal();
     (dialog.querySelector('input') as HTMLInputElement | null)?.focus();
   }
+  dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
   document.querySelectorAll('[data-search-open]').forEach((b) => b.addEventListener('click', open));
   document.addEventListener('keydown', (e) => {
     const typing = (e.target as HTMLElement)?.closest('input, textarea, [contenteditable]');
-    if ((e.key === '/' && !typing) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) { e.preventDefault(); open(); }
+    const slash = e.key === '/' && !typing && !e.ctrlKey && !e.metaKey && !e.altKey;
+    if (slash || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) { e.preventDefault(); open(); }
   });
 </script>
 <style is:global>
