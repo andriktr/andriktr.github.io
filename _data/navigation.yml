@@ -6,6 +6,7 @@ main:
     url: /about/
   - title: "Resume"
     url: /assets/docs/cv-andrej-trusevic.pdf
+    download: true
   - title: "Certifications"
     url: /certifications/
   - title: "Archive"
