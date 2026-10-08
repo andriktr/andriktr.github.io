@@ -3,8 +3,8 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Search from '../components/Search.astro';
 import { SITE } from '../config';
-interface Props { title?: string; description?: string; ogType?: 'website' | 'article' }
-const { title, description = SITE.description, ogType = 'website' } = Astro.props;
+interface Props { title?: string; description?: string; ogType?: 'website' | 'article'; noindex?: boolean }
+const { title, description = SITE.description, ogType = 'website', noindex = false } = Astro.props;
 const path = Astro.url.pathname;
 const fullTitle = title ? `${title} | ${SITE.title}` : `${SITE.author} | ${SITE.title}`;
 const canonical = new URL(path, SITE.url).href;
@@ -16,7 +16,7 @@ const canonical = new URL(path, SITE.url).href;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={canonical} />
+  {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
   <meta property="og:type" content={ogType} />
   <meta property="og:title" content={title ?? SITE.title} />
   <meta property="og:description" content={description} />

@@ -26,7 +26,7 @@
   dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
   document.querySelectorAll('[data-search-open]').forEach((b) => b.addEventListener('click', open));
   document.addEventListener('keydown', (e) => {
-    const typing = (e.target as HTMLElement)?.closest('input, textarea, [contenteditable]');
+    const typing = e.target instanceof Element && e.target.closest('input, textarea, [contenteditable]');
     const slash = e.key === '/' && !typing && !e.ctrlKey && !e.metaKey && !e.altKey;
     if (slash || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) { e.preventDefault(); open(); }
   });

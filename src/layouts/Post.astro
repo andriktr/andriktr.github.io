@@ -7,6 +7,7 @@ import { formatDate, readingMinutes, type Post } from '../lib/posts';
 interface Props { post: Post; headings: MarkdownHeading[] }
 const { post, headings } = Astro.props;
 const { title, excerpt, date, tags, toc } = post.data;
+const showToc = toc && headings.filter((h) => h.depth === 2 || h.depth === 3).length >= 3;
 ---
 <Base title={title} description={excerpt} ogType="article">
   <div class="post-grid">
@@ -17,20 +18,20 @@ const { title, excerpt, date, tags, toc } = post.data;
       <div class="prose" data-pagefind-body><slot /></div>
       <slot name="after" />
     </article>
-    {toc && <aside class="toc-col"><Toc headings={headings} /></aside>}
+    {showToc && <aside class="toc-col"><Toc headings={headings} /></aside>}
   </div>
-</Base>
-<script>
-  document.querySelectorAll<HTMLPreElement>('pre.astro-code').forEach((pre) => {
-    const lang = pre.dataset.language;
-    if (lang && lang !== 'plaintext') pre.insertAdjacentHTML('afterbegin', `<span class="code-lang">${lang}</span>`);
-    const btn = document.createElement('button');
-    btn.className = 'code-copy'; btn.type = 'button'; btn.textContent = 'copy';
-    btn.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? ''); btn.textContent = 'copied'; }
-      catch { btn.textContent = 'failed'; }
-      setTimeout(() => (btn.textContent = 'copy'), 1500);
+  <script>
+    document.querySelectorAll<HTMLPreElement>('pre.astro-code').forEach((pre) => {
+      const lang = pre.dataset.language;
+      if (lang && lang !== 'plaintext') pre.insertAdjacentHTML('afterbegin', `<span class="code-lang">${lang}</span>`);
+      const btn = document.createElement('button');
+      btn.className = 'code-copy'; btn.type = 'button'; btn.textContent = 'copy';
+      btn.addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? ''); btn.textContent = 'copied'; }
+        catch { btn.textContent = 'failed'; }
+        setTimeout(() => (btn.textContent = 'copy'), 1500);
+      });
+      pre.appendChild(btn);
     });
-    pre.appendChild(btn);
-  });
-</script>
+  </script>
+</Base>
