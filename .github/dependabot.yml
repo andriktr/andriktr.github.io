@@ -1,0 +1,18 @@
+# Weekly update PRs. CI builds and tests each one; nothing merges or deploys
+# until a PR is merged into master by hand.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule: { interval: weekly, day: monday }
+    open-pull-requests-limit: 5
+    groups:
+      # One PR for all minor/patch bumps instead of one per package
+      npm-minor-patch:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly, day: monday }
+    groups:
+      actions:
+        patterns: ['*']
