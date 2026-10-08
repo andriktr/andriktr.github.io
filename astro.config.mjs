@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://sysadminas.eu',
   trailingSlash: 'always',
   build: { format: 'directory' },
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/404/') })],
   markdown: {
     remarkPlugins: [remarkLegacy],
     shikiConfig: {

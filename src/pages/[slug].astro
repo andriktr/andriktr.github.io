@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Post from '../layouts/Post.astro';
+import Giscus from '../components/Giscus.astro';
 import { getPublishedPosts } from '../lib/posts';
 
 export async function getStaticPaths() {
@@ -10,4 +11,4 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 ---
-<Post post={post} headings={headings}><Content /></Post>
+<Post post={post} headings={headings}><Content /><Giscus slot="after" /></Post>
