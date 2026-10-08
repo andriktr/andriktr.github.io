@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
+import Search from '../components/Search.astro';
 import { SITE } from '../config';
 interface Props { title?: string; description?: string; ogType?: 'website' | 'article' }
 const { title, description = SITE.description, ogType = 'website' } = Astro.props;
@@ -32,6 +33,7 @@ const canonical = new URL(path, SITE.url).href;
 </head>
 <body>
   <Nav path={path} />
+  <Search />
   <main class="wrap"><slot /></main>
   <footer class="site-footer"><div class="wrap">© {new Date().getUTCFullYear()} {SITE.author} · <a href="/feed.xml">rss</a> · <a href="https://github.com/andriktr">github</a> · <a href="https://www.linkedin.com/in/andrej-trusevic-53879a7a/">linkedin</a></div></footer>
   {import.meta.env.PROD && <script is:inline data-goatcounter={SITE.goatcounter} async src="https://gc.zgo.at/count.js"></script>}

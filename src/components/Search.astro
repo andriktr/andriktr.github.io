@@ -1,0 +1,30 @@
+<dialog id="search-dialog" aria-label="Search posts">
+  <form method="dialog" class="search-close"><button class="kbd" aria-label="Close search">esc</button></form>
+  <div id="search"></div>
+</dialog>
+<script>
+  const dialog = document.getElementById('search-dialog') as HTMLDialogElement;
+  let loaded = false;
+  async function open() {
+    if (!loaded) {
+      loaded = true;
+      const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = '/pagefind/pagefind-ui.css'; document.head.appendChild(css);
+      await new Promise<void>((res, rej) => { const s = document.createElement('script'); s.src = '/pagefind/pagefind-ui.js'; s.onload = () => res(); s.onerror = () => rej(); document.head.appendChild(s); })
+        .then(() => new (window as any).PagefindUI({ element: '#search', showSubResults: true, resetStyles: false }))
+        .catch(() => { document.getElementById('search')!.textContent = 'search index unavailable (run npm run build)'; });
+    }
+    dialog.showModal();
+    (dialog.querySelector('input') as HTMLInputElement | null)?.focus();
+  }
+  document.querySelectorAll('[data-search-open]').forEach((b) => b.addEventListener('click', open));
+  document.addEventListener('keydown', (e) => {
+    const typing = (e.target as HTMLElement)?.closest('input, textarea, [contenteditable]');
+    if ((e.key === '/' && !typing) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) { e.preventDefault(); open(); }
+  });
+</script>
+<style is:global>
+  #search-dialog { width: min(720px, calc(100vw - 32px)); max-height: 80vh; background: var(--bg-soft); color: var(--fg); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; }
+  #search-dialog::backdrop { background: rgb(0 0 0 / .6); }
+  .search-close { text-align: right; }
+  #search { --pagefind-ui-scale: .85; --pagefind-ui-primary: var(--accent); --pagefind-ui-text: var(--fg); --pagefind-ui-background: var(--bg); --pagefind-ui-border: var(--border); --pagefind-ui-tag: var(--code-bg); --pagefind-ui-font: var(--font-mono); }
+</style>
