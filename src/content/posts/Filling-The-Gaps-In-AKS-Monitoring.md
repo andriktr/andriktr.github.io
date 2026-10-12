@@ -11,7 +11,7 @@ tags:
   - Grafana
   - Flux
 toc: true
-draft: true
+draft: false
 ---
 
 kube-prometheus-stack is a great starting point. One Helm chart gives you Prometheus, Alertmanager, Grafana, node-exporter, kube-state-metrics, around 35 dashboards and a couple of hundred alert rules from the kubernetes-mixin. For a long time I treated that as "monitoring done" on our AKS clusters, added a Teams receiver, and moved on.
