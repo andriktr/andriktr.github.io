@@ -160,4 +160,32 @@ The [roadmap issue](https://github.com/k8s-servant/k8s-skills/issues/16) tracks 
 
 Every new skill gets the same treatment: upstream docs and source as references, at least two broken-on-purpose scenarios, and an agent run with a view-only kubeconfig before it's merged.
 
-The project is Apache-2.0, and contributions are welcome. A new scenario is a good first PR, and there are [good first issues](https://github.com/k8s-servant/k8s-skills/labels/good%20first%20issue) to start from. If there's a tool you'd like covered, or one of these you need sooner, [open an issue](https://github.com/k8s-servant/k8s-skills/issues/new/choose) and tell me.
+## How you can contribute
+
+The project is Apache-2.0, and I'd love help with it. You don't need to write a whole skill to make a difference. Here are four ways in, from smallest to biggest.
+
+**Tell me when a skill got it wrong.** If an agent using a skill missed the cause, blamed the wrong thing or proposed a bad fix, open a [Skill problem](https://github.com/k8s-servant/k8s-skills/issues/new?template=skill_problem.yml) issue. Include what you asked, what the agent concluded and what the real cause was. Use placeholders like `my-app` and `my-namespace`, never real names or Secrets. These reports are the most valuable feedback, because they come from problems in real clusters that my scenarios didn't cover.
+
+**Ask for a skill.** If there's a tool you run that isn't covered, or one from the list above you need sooner, open a [New skill](https://github.com/k8s-servant/k8s-skills/issues/new?template=new_skill.yml) issue. Include the symptoms you'd describe to an agent and links to the tool's official docs. That's most of what a skill needs to start.
+
+**Add a scenario.** This is a good first PR. Pick a symptom a skill describes but no scenario tests yet (there are [good first issues](https://github.com/k8s-servant/k8s-skills/labels/good%20first%20issue) like this). Write the four files, and run it on your own machine. The test kit only ever touches its own throwaway kind cluster:
+
+```bash
+git clone https://github.com/k8s-servant/k8s-skills.git && cd k8s-skills
+tests/cluster.sh up                                      # throwaway kind cluster
+tests/run.sh k8s-workload-troubleshooting my-new-case    # set up and break it
+# give an agent the printed prompt and view-only KUBECONFIG, compare with expected.md
+tests/run.sh --cleanup k8s-workload-troubleshooting my-new-case
+tests/cluster.sh down
+```
+
+**Write a skill.** The rules are in [CONTRIBUTING.md](https://github.com/k8s-servant/k8s-skills/blob/main/CONTRIBUTING.md), and CI checks most of them for you:
+
+- every fact comes from the tool's own docs or source, listed under Sources
+- every error message is reproduced on kind
+- every command is in its tier, with an undo line for each change
+- there are at least two scenarios
+
+Start from one of the existing ecosystem skills. They all follow the same shape.
+
+If you just want to try it, run it against a cluster you know well, with a read-only kubeconfig, and tell me what it found. Stars help other people find the project too.
