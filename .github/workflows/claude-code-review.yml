@@ -57,12 +57,17 @@ jobs:
       # didn't run Claude (for example a workflow change, which it refuses to review).
       - name: Check that Claude posted a review
         if: steps.claude-review.outputs.execution_file != ''
+        # Explicit bash runs with -eo pipefail, so a failing gh api fails the step
+        # instead of leaving an empty count that would let it pass
+        shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ github.event.pull_request.number }}
         run: |
-          comments=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate --jq '[.[] | select(.user.login == "claude[bot]")] | length' | paste -sd+ - | bc)
-          reviews=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR/reviews" --paginate --jq '[.[] | select(.user.login == "claude[bot]")] | length' | paste -sd+ - | bc)
+          # --paginate prints one count per page; awk sums them and always prints a number
+          count() { gh api "repos/$GITHUB_REPOSITORY/$1" --paginate --jq '[.[] | select(.user.login == "claude[bot]")] | length' | awk '{s += $1} END {print s + 0}'; }
+          comments=$(count "issues/$PR/comments")
+          reviews=$(count "pulls/$PR/reviews")
           echo "Claude comments: $comments, reviews: $reviews"
           if [ "$comments" -eq 0 ] && [ "$reviews" -eq 0 ]; then
             echo "::error::Claude Code Review finished without posting anything on this PR"
