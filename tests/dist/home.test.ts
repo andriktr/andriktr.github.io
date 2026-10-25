@@ -15,7 +15,7 @@ describe('home + pagination', () => {
     expect(existsSync('dist/page8/index.html')).toBe(false);
     expect(existsSync('dist/page1/index.html')).toBe(false);
   });
-  it('last page holds the remainder (33 = 6*5 + 3)', () => {
-    expect(count(readFileSync('dist/page7/index.html', 'utf8'))).toBe(3);
+  it('last page holds the remainder (34 = 6*5 + 4)', () => {
+    expect(count(readFileSync('dist/page7/index.html', 'utf8'))).toBe(4);
   });
 });
