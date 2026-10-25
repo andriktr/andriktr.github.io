@@ -11,7 +11,7 @@ tags:
   - DevOps
   - CLI
 toc: true
-draft: true
+draft: false
 ---
 
 Give a coding agent `kubectl` and a problem, and it will usually find something. The trouble is what it does next. A good SRE looks at the pods, the events and the logs before touching anything, and when they do change something, they know how to undo it. An agent left to itself is just as likely to restart a Deployment, edit a ConfigMap in place or run `kubectl delete pod` to "see if it helps".
