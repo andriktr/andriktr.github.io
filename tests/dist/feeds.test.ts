@@ -3,9 +3,9 @@ import { describe, it, expect } from 'vitest';
 const read = (p: string) => readFileSync(`dist${p}`, 'utf8');
 
 describe('feeds and metadata', () => {
-  it('feed.xml lists 32 posts with https links and no drafts', () => {
+  it('feed.xml lists 33 posts with https links and no drafts', () => {
     const xml = read('/feed.xml');
-    expect((xml.match(/<item>/g) ?? []).length).toBe(32);
+    expect((xml.match(/<item>/g) ?? []).length).toBe(33);
     expect(xml).toContain('<link>https://sysadminas.eu/AKS-Issue-Analyzer-Claude-Skill/</link>');
     expect(xml).not.toContain('Part-11-AKS');
   });

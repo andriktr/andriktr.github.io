@@ -1,7 +1,7 @@
 ---
 title: "Agentic AI Basics: What a Coding Agent Actually Does"
 excerpt: "How a coding agent works under the hood: the agent loop, the layers of context, permissions, modes, subagents and skills, explained with GitHub Copilot CLI."
-date: 2026-10-14
+date: 2026-10-25
 urlSlug: Agentic-AI-Basics-Copilot-CLI
 tags:
   - AI
@@ -11,7 +11,7 @@ tags:
   - DevOps
   - Automation
 toc: true
-draft: true
+draft: false
 ---
 
 I'm preparing an internal talk on GitHub Copilot CLI. While putting it together, I realised the most useful part isn't the list of features and commands. It's the questions people ask once they start using an agent, which all come down to the same thing: *what is the agent actually doing when it "thinks"?* Why does it read files nobody asked it to read? Why does it get slower in a long session? Why does it ask permission for some things and not others?
