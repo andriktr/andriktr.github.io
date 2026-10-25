@@ -119,7 +119,7 @@ A lot follows from that:
 
 - **The model remembers nothing between steps.** It only knows what's in the context. Every file it reads and every command output makes the context bigger, so context is a budget.
 - **The model never touches your machine.** It only *asks* for a tool. The CLI runs it, and that's where permissions come in.
-- **Modes change how the loop runs.** *Plan* gives it read-only tools, *interactive* stops for your approvals, and *autopilot* keeps looping without stopping.
+- **Modes change how the loop runs.** *Plan* blocks any change to the workspace, *interactive* stops for your approvals, and *autopilot* keeps looping without stopping.
 - **A subagent is a loop inside the loop.** It has a fresh context and its own tool calls, and only its final answer comes back.
 - **Instructions, skills and MCP are just more text in the context, or more tools on the list.** Nothing magic.
 
@@ -137,7 +137,7 @@ There are three limits worth knowing:
 
 What happens as a session gets longer:
 
-- **Each step gets heavier.** Because the full context is re-sent on every step, step 40 of a long session carries everything from steps 1 to 39 with it. Providers cache the repeated part to soften the cost, but every step is still bigger and slower than the one before.
+- **Each step gets heavier.** Because the full context is re-sent on every step, step 40 of a long session carries everything from steps 1 to 39 with it. Providers cache the repeated part, which saves time and cost, but every step is still bigger than the one before and still counts against the context window.
 - **Quality drops before you hit the limit.** The more there is in the context, the harder it is for the model to pay attention to the part that matters. Old, irrelevant tool output is noise. A focused session usually gives better answers than a huge one.
 - **Near the limit, the CLI compacts.** It summarises the older history to make room and keeps going. The summary keeps the gist but loses details, so if something matters, put it in the instructions file or repeat it.
 
@@ -177,7 +177,7 @@ Three commands keep it under control:
 
 ## Plan First, and Tell It How to Verify
 
-For anything bigger than a one-liner, start in **plan mode** (`shift+tab`, or `/plan <task>`). In plan mode the agent only has read-only tools. It reads what it needs and writes a plan, but **edits nothing**. Expect it to ask you questions along the way: plan mode leans on the `ask_user` tool to settle ambiguities before it commits to a plan, instead of guessing. That's the clarifying-question arrow from the diagram. Answer it, and the answer becomes part of the context the plan is built on.
+For anything bigger than a one-liner, start in **plan mode** (`shift+tab`, or `/plan <task>`). In plan mode the CLI blocks edits and other changes to the workspace (MCP tools aren't covered), so the agent reads what it needs and writes a plan, but **changes nothing**. Expect it to ask you questions along the way: plan mode leans on the `ask_user` tool to settle ambiguities before it commits to a plan, instead of guessing. That's the clarifying-question arrow from the diagram. Answer it, and the answer becomes part of the context the plan is built on.
 
 The plan is the cheapest moment to correct the agent, before a dozen files exist. Once it looks right, approve it.
 
@@ -185,13 +185,13 @@ As it works, it asks for approvals. File edits and commands can be approved **on
 
 The single most useful thing you can put in a prompt is **how to check the result**: which tests to run, which linter, what output to compare against. An agent that can check its own work will do it before saying it's done. If a check fails, you see the loop fix itself: it reads the error, edits and runs the check again. Most of the quality you get out of an agent comes from this.
 
-When it's done, `/diff` shows everything it changed in one view. Read it like you'd read a colleague's PR.
+When it's done, `/diff` shows all the changes in the working directory in one view. Read it like you'd read a colleague's PR.
 
 ## Undo and Permissions
 
 `/rewind` undoes a turn, **including its file changes**. An edit you don't like, or a file it shouldn't have deleted, is one command away from being back.
 
-Remember that the model never runs anything itself. It asks, and the CLI decides. `/permissions` shows the current mode and what you've approved this session. For scripted runs you set the rules up front:
+Remember that the model never runs anything itself. It asks, and the CLI decides. `/permissions` switches the approval mode, and `/permissions show` shows the current one. For scripted runs you set the rules up front:
 
 ```bash
 copilot --allow-tool='shell(git:*)' --deny-tool='shell(git push)'
@@ -211,7 +211,7 @@ A custom agent is just a Markdown file in `.github/agents/`: a name, a descripti
 
 `/goal <objective>` switches to autopilot with an objective. The agent stops waiting for you, answers its own questions and keeps going until the objective is met.
 
-Write the objective with a "done when" part, for example "done when the tests and the linter pass". It's the same idea as verification in plan mode: an agent running on its own needs a clear way to know when it's finished. Autopilot has guardrails: you can cap the AI credits a goal may spend, `--max-autopilot-continues` limits how often it continues on its own, and `esc` stops it at any time.
+Write the objective with a "done when" part, for example "done when the tests and the linter pass". It's the same idea as verification in plan mode: an agent running on its own needs a clear way to know when it's finished. Autopilot has guardrails: a credit cap if you set one (`/goal <objective> --max-ai-credits 50`, or `--max-ai-credits` / `/limits` for the whole session; limits are opt-in), `--max-autopilot-continues` limits how often it continues on its own, and `esc` stops it at any time.
 
 So the three modes map onto the loop: **plan** looks but doesn't touch, **interactive** stops for your approvals, **autopilot** runs until the goal is reached or the budget runs out.
 
@@ -242,10 +242,10 @@ Resuming brings the context back. `/fork` branches the conversation to try somet
 The same agent without the UI, for scripts and pipelines:
 
 ```bash
-git diff main | copilot -p "Review this diff for bugs" -s
+copilot -p "Review this diff for bugs: $(git diff main)" -s
 ```
 
-`-p` takes the prompt, and `-s` prints only the answer. Combine it with `--allow-tool` / `--deny-tool` so it can't do more in CI than you intend.
+`-p` takes the prompt, and `-s` prints only the answer. Put the input in the prompt itself: piped input is ignored when you also pass `-p`. There's no one to approve tool calls in this mode, so combine it with `--allow-tool` / `--deny-tool` so it can't do more in CI than you intend.
 
 ## When Things Go Wrong
 
@@ -253,7 +253,7 @@ git diff main | copilot -p "Review this diff for bugs" -s
 |---|---|
 | Wandering off | `esc`, then a more specific prompt |
 | Bad edit | `/rewind` |
-| `/goal` running too long | `esc`; the credit cap stops it anyway |
+| `/goal` running too long | `esc`; a credit cap, if you set one, stops it too |
 | Answers getting worse in a long session | `/compact`, or `/new` for a new topic |
 
 ## Takeaways
