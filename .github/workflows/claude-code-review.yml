@@ -12,9 +12,12 @@ on:
 
 jobs:
   claude-review:
-    # Skip drafts, and bot PRs (Dependabot): the action rejects bot actors, and
-    # Dependabot runs can't read this secret, so those runs would only fail.
-    if: github.event.pull_request.draft == false && github.event.pull_request.user.type != 'Bot'
+    # Skip drafts, bot PRs (Dependabot) and fork PRs: the action rejects bot actors,
+    # and neither Dependabot nor fork runs can read this secret, so they would only fail.
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.user.type != 'Bot' &&
+      github.event.pull_request.head.repo.full_name == github.repository
 
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -24,7 +27,7 @@ jobs:
       cancel-in-progress: true
     permissions:
       contents: read
-      pull-requests: write # The plugin posts its summary comment with gh pr comment
+      pull-requests: read # Claude comments with its own app token, not this one
       issues: read
       id-token: write
 
@@ -42,11 +45,31 @@ jobs:
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: '/code-review:code-review --comment ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
-          # Same tools the code-review plugin declares in its own allowed-tools front matter
-          claude_args: '--allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr list:*),Bash(gh issue view:*),Bash(gh search:*)"'
-          # Full transcript in the job log, for debugging runs that post nothing.
-          # The repo is public, so these logs are too; the job only runs gh against this repo.
-          show_full_output: true
+          # The code-review plugin's own allowed-tools, minus gh search and gh issue view:
+          # PR content is untrusted input, so keep the model's reach to this PR
+          claude_args: '--allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr list:*)"'
+          # For debugging, show_full_output: true prints the transcript to the (public) job log
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
 
+      # A run can end early and still pass without posting anything, so fail if Claude
+      # ran but has never commented on or reviewed this PR. Skipped when the action
+      # didn't run Claude (for example a workflow change, which it refuses to review).
+      - name: Check that Claude posted a review
+        if: steps.claude-review.outputs.execution_file != ''
+        # Explicit bash runs with -eo pipefail, so a failing gh api fails the step
+        # instead of leaving an empty count that would let it pass
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          # --paginate prints one count per page; awk sums them and always prints a number
+          count() { gh api "repos/$GITHUB_REPOSITORY/$1" --paginate --jq '[.[] | select(.user.login == "claude[bot]")] | length' | awk '{s += $1} END {print s + 0}'; }
+          comments=$(count "issues/$PR/comments")
+          reviews=$(count "pulls/$PR/reviews")
+          echo "Claude comments: $comments, reviews: $reviews"
+          if [ "$comments" -eq 0 ] && [ "$reviews" -eq 0 ]; then
+            echo "::error::Claude Code Review finished without posting anything on this PR"
+            exit 1
+          fi
