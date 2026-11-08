@@ -10,7 +10,7 @@ tags:
   - CLI
   - DevOps
   - Automation
-draft: true
+draft: false
 ---
 
 I usually have more than one coding agent open: Claude Code in one pane, GitHub Copilot CLI in another, sometimes a second Claude for a side task. Until recently I was the one moving between them, copying a question from one pane to the next and comparing the answers myself.
