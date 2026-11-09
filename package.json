@@ -12,23 +12,23 @@
     "migrate": "node scripts/migrate-posts.mjs"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.3.5",
+    "@astrojs/markdown-remark": "^7.3.6",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource/inter": "^5.3.0",
     "@fontsource/jetbrains-mono": "^5.3.0",
-    "astro": "^7.4.4"
+    "astro": "^7.4.7"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
     "gray-matter": "^4.0.3",
     "js-yaml": "^5.5.0",
-    "pagefind": "^1.5.2",
+    "pagefind": "^1.6.0",
     "rehype-stringify": "^10.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.2.0",
-    "vitest": "^5.0.5"
+    "vitest": "^5.1.0"
   }
 }
