@@ -8,14 +8,14 @@ describe('home + pagination', () => {
     const html = readFileSync('dist/index.html', 'utf8');
     expect(html).toContain('whoami');
     expect(count(html)).toBe(5);
-    expect(html).toContain('href="/AKS-Issue-Analyzer-Claude-Skill/"');
+    expect(html).toContain('href="/Kubedelos-Cluster-Image-Scanning/"');
   });
-  it('emits /page2/ … /page7/ and no /page8/ or /page1/', () => {
-    for (let n = 2; n <= 7; n++) expect(existsSync(`dist/page${n}/index.html`), `page${n}`).toBe(true);
-    expect(existsSync('dist/page8/index.html')).toBe(false);
+  it('emits /page2/ … /page8/ and no /page9/ or /page1/', () => {
+    for (let n = 2; n <= 8; n++) expect(existsSync(`dist/page${n}/index.html`), `page${n}`).toBe(true);
+    expect(existsSync('dist/page9/index.html')).toBe(false);
     expect(existsSync('dist/page1/index.html')).toBe(false);
   });
-  it('last page holds the remainder (35 = 6*5 + 5)', () => {
-    expect(count(readFileSync('dist/page7/index.html', 'utf8'))).toBe(5);
+  it('last page holds the remainder (36 = 7*5 + 1)', () => {
+    expect(count(readFileSync('dist/page8/index.html', 'utf8'))).toBe(1);
   });
 });
