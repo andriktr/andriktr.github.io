@@ -10,7 +10,7 @@ tags:
   - Vulnerability
   - Helm
   - Claude Code
-draft: true
+draft: false
 ---
 
 Running Trivy against one image is easy. Doing it for a whole cluster, week after week, is where it gets hard. `trivy k8s` gives you a long report of what is vulnerable right now, but the questions I actually get asked are different: which of these should we fix first, what changed since last week, and which team owns that namespace?
